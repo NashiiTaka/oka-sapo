@@ -1,7 +1,6 @@
 import jsonData from './datas/tproducts/20240626_1158_lips_00001-00367.json' assert { type: 'json' };
 import { JSDOM } from 'jsdom';
-import fs from 'fs';
-import Papa from 'papaparse';
+import { outputCsv } from './util.mjs';
 import XLSX from 'xlsx';
 
 const mapping = {
@@ -134,16 +133,6 @@ for (const json of jsonData) {
 
     convertedArr.push(converted);
     console.log(converted.product_name);
-}
-
-function outputCsv(baseName, data) {
-    fs.writeFile(`${process.cwd()}/node/outcsv/${baseName}.csv`, Papa.unparse(data), (err) => {
-        if (err) {
-            throw new Error('Error writing file:', err);
-        } else {
-            console.log('File has been saved.');
-        }
-    });
 }
 
 const makers = [];
