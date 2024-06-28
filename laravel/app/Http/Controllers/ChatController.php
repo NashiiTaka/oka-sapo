@@ -13,7 +13,15 @@ class ChatController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $message = "こんにちは。コスメピシャットへようこそ！\n本日はどのような目的でご来店いただいたのですか？";
+        $options = [
+            ['display' => '新しいアイテムが欲しい。', 'goto' => 'ask-purpose'],
+            ['display' => '良さげなものがあれば買いたい。', 'goto' => 'best-one-lead'],
+            ['display' => 'どんな商品があるか情報だけを知りたい。', 'goto' => 'best-one-lead']
+        ];
+        $multiple = false;
+
+        return view('singleanswer', compact('message', 'options', 'multiple'));
     }
 
     public function passer(Request $request)
