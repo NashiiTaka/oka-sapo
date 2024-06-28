@@ -8,7 +8,7 @@ cd laravel
 sail composer install
 
 ## NPM の依存関係をインストールする。
-sail npm install
+npm install
 
 ## マイグレーション(データベースの更新)を実行する。
 sail artisan migrate
