@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('t_chats', function (Blueprint $table) {
+            $table->comment('チャットメッセージ');
+
             $table->id();
-            $table->string('thread_id', 128)->index();
-            $table->string('role', 32);
-            $table->text('message');
+            $table->string('thread_id', 128)->index()->comment('ChatGPTのスレッドID');
+            $table->string('role', 32)->comment('送信者の役割、user、botなどが入る');
+            $table->text('message')->comment('メッセージ');
             $table->timestamps();
         });
     }
