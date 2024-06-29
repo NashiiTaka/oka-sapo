@@ -12,20 +12,22 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('t_reviews', function (Blueprint $table) {
+            $table->comment('レビュー');
             $table->id();
 
-            $table->integer('reviewer_id')->nullable();
-            $table->string('reviewer_name');
-            $table->integer('followers_level')->nullable();
-            $table->integer('reviews_count');
-            $table->integer('reviewer_age');
-            $table->string('reviewer_skin_type');
-            $table->integer('product_id');
-            $table->string('method_of_acquisition')->nullable();
-            $table->float('rating')->nullable();
-            $table->string('effects')->nullable();
-            $table->text('review_content');
-            $table->timestamp('published_at');
+            $table->integer('review_id')->comment('取得元のレビューID')->unique();
+            $table->integer('reviewer_id')->nullable()->comment('レビュアーID');
+            $table->string('reviewer_name')->comment('レビュアー名');
+            $table->integer('followers_level')->nullable()->comment('フォロワー数のレベル 〜名以上という意味');
+            $table->integer('reviews_count')->comment('レビューアーの総レビュー数');
+            $table->integer('reviewer_age')->comment('レビュアーの年齢');
+            $table->string('reviewer_skin_type')->comment('レビュアーの肌質');
+            $table->integer('product_id')->comment('商品ID');
+            $table->string('method_of_acquisition')->nullable()->comment('入手方法');
+            $table->float('rating')->nullable()->comment('レビュー点数');
+            $table->string('effects')->nullable()->comment('効果、、「|」区切りで複数登録');
+            $table->text('review_content')->comment('レビュー内容');
+            $table->timestamp('published_at')->comment('レビュー投稿日時');
             
             $table->timestamps();
         });

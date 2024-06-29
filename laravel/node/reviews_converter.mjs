@@ -9,6 +9,11 @@ const jsonFiles = [
     `${process.cwd()}/node/datas/reviews/アットコスメ_リップ_レビュー_再開2.json`,
 ];
 
+// 例外的なデータ。キーにreview_id、値に[キー:修正対象キー名、値:修正後の値]を持つオブジェクト
+const irregularDatas = {
+    513280595: { reviewer_name: 'リエ1168', reviews_count: 1 }
+};
+
 const mapping = {
     記事内容: { action: (content, buffer) => buffer['review_content'] = content },
     投稿日時: { action: (content, buffer) => buffer['published_at'] = content },
@@ -50,7 +55,7 @@ const mapping = {
                     dd = dd.nextElementSibling;
                 }
 
-                const joined = effects.join(',');
+                const joined = effects.join('|');
                 buffer['effects'] = joined === '-' ? null : joined;
             }
         }
@@ -85,6 +90,11 @@ for (const key in jsonData) {
 
     console.log(buffer);
     if (!registeredIds.includes(buffer['review_id'])) {
+        // イレギュラー対応処理
+        if (Object.keys(irregularDatas).includes(buffer['review_id'])) {
+            Object.entries(irregularDatas[buffer['review_id']]).forEach(([k, v]) => buffer[k] = v);
+        }
+
         convertedArr.push(buffer);
         registeredIds.push(buffer['review_id']);
     }

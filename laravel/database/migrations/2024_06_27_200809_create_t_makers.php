@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('t_makers', function (Blueprint $table) {
+            $table->comment('メーカー');
             $table->id();
 
-            $table->integer('maker_id')->unique();
-            $table->string('maker_name');
+            $table->integer('maker_id')->unique()->comment('取得元のメーカーID');
+            $table->string('maker_name')->comment('メーカー名');
 
             $table->timestamps();
         });

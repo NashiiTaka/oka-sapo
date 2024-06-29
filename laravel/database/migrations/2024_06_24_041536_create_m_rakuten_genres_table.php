@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('m_rakuten_genres', function (Blueprint $table) {
+            $table->comment('楽天ジャンル');
+
             $table->integer('id');
-            $table->string('name', 128);
-            $table->tinyInteger('depth');
-            $table->integer('parent_id')->index()->nullable();
+            $table->string('name', 128)->comment('楽天ジャンル名');
+            $table->tinyInteger('depth')->comment('ジャンル階層、1:トップカテゴリ、以下、最大5層まで。');
+            $table->integer('parent_id')->index()->nullable()->comment('親ジャンルID。トップカテゴリの場合はNULL。');
             $table->timestamps();
             $table->primary('id');
         });

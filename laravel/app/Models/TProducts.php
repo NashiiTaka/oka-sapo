@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TProducts extends Model
 {
     use HasFactory;
+
+    static function getRecommendations()
+    {
+        return TProducts::limit(3)->get();
+    }
 }
