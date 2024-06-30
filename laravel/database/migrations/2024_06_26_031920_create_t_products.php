@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('t_products', function (Blueprint $table) {
             $table->comment('商品情報');
-            $table->id(); 
 
-            $table->integer('product_id')->unique()->index()->comment('取得元の商品ID');
+            $table->integer('product_id')->comment('取得元の商品ID')->primary();
             $table->string('product_name')->comment('商品名');
             $table->integer('maker_id')->index()->comment('メーカーID');
             $table->integer('brand_id')->index()->comment('ブランドID');

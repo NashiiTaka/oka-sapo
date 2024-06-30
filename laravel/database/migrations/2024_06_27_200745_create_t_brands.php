@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('t_brands', function (Blueprint $table) {
             $table->comment('ブランド');
-            $table->id();
 
-            $table->integer('brand_id')->unique()->comment('取得元のブランドID');
+            $table->integer('brand_id')->unique()->primary()->comment('取得元のブランドID');
             $table->string('brand_name')->comment('ブランド名');
             $table->integer('maker_id')->comment('メーカーID');
             $table->string('official_site')->nullable()->comment('公式サイトURL');

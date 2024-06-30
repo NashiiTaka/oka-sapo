@@ -1,1030 +1,1175 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
 
 <html xmlns:s="http://sqlfairy.sourceforge.net/sqlfairy.xml" lang="ja">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<meta charset="utf-8">
-<title>テーブル定義</title>
-<style>
-					.page {
-						width:960px;
-						margin:0 auto 100px auto;
-					}
-					table {
-						width:100%;
-						table-layout:fixed;
-						border-collapse:collapse;
-					}
-					th, td {
-						word-wrap:break-word;
-						border:1px solid #999;
-					}
-mysqldump -d -uroot -p --xml laravel -hmysql --ignore-table=laravel.cache --ignore-table=laravel.cache_locks --ignore-table=laravel.failed_jobs --ignore-table=laravel.job_batches --ignore-table=laravel.jobs --ignore-table=laravel.migrations --ignore-table=laravel.password_reset_tokens --ignore-table=laravel.sessions --ignore-table=laravel.users > dbdump.xml
-					@media print {
-						.page {
-							width:100%;
-							margin:0;
-							page-break-after:always;
-						}
-					}
-				</style>
-</head>
-<body>
-<div class="page" style="text-align:center;"><h1 style="padding:30mm 0;">テーブル定義書</h1></div>
-<div class="page">
-<table class="table table-bordered htable" style="margin-bottom:1em;">
-<colgroup>
-<col style="width:30%;">
-<col style="">
-</colgroup>
-<tbody>
-<tr>
-<th>テーブル名</th>
-<td>m_categories</td>
-</tr>
-<tr>
-<th>備考</th>
-<td>カテゴリ</td>
-</tr>
-</tbody>
-</table>
-<table class="table table-condensed">
-<colgroup>
-<col style="width:3em;">
-<col style="max-width:50%;">
-<col style="max-width:50%;">
-<col style="width:4em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="">
-</colgroup>
-<thead><tr style="white-space:nowrap;">
-<th class="text-right">#</th>
-<th>物理名</th>
-<th>型</th>
-<th>NULL</th>
-<th>初期値</th>
-<th>主キー</th>
-<th>ユニーク</th>
-<th>備考</th>
-</tr></thead>
-<tbody>
-<tr>
-<td class="text-right">1</td>
-<td>id</td>
-<td>bigint unsigned</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;">○</td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">2</td>
-<td>category_id</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;">○</td>
-<td>取得元のカテゴリID</td>
-</tr>
-<tr>
-<td class="text-right">3</td>
-<td>category_name</td>
-<td>varchar(255)</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>カテゴリ名</td>
-</tr>
-<tr>
-<td class="text-right">4</td>
-<td>created_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">5</td>
-<td>updated_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="page">
-<table class="table table-bordered htable" style="margin-bottom:1em;">
-<colgroup>
-<col style="width:30%;">
-<col style="">
-</colgroup>
-<tbody>
-<tr>
-<th>テーブル名</th>
-<td>m_rakuten_genres</td>
-</tr>
-<tr>
-<th>備考</th>
-<td>楽天ジャンル</td>
-</tr>
-</tbody>
-</table>
-<table class="table table-condensed">
-<colgroup>
-<col style="width:3em;">
-<col style="max-width:50%;">
-<col style="max-width:50%;">
-<col style="width:4em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="">
-</colgroup>
-<thead><tr style="white-space:nowrap;">
-<th class="text-right">#</th>
-<th>物理名</th>
-<th>型</th>
-<th>NULL</th>
-<th>初期値</th>
-<th>主キー</th>
-<th>ユニーク</th>
-<th>備考</th>
-</tr></thead>
-<tbody>
-<tr>
-<td class="text-right">1</td>
-<td>id</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;">○</td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">2</td>
-<td>name</td>
-<td>varchar(128)</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>楽天ジャンル名</td>
-</tr>
-<tr>
-<td class="text-right">3</td>
-<td>depth</td>
-<td>tinyint</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>ジャンル階層、1:トップカテゴリ、以下、最大5層まで。</td>
-</tr>
-<tr>
-<td class="text-right">4</td>
-<td>parent_id</td>
-<td>int</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>親ジャンルID。トップカテゴリの場合はNULL。</td>
-</tr>
-<tr>
-<td class="text-right">5</td>
-<td>created_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">6</td>
-<td>updated_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="page">
-<table class="table table-bordered htable" style="margin-bottom:1em;">
-<colgroup>
-<col style="width:30%;">
-<col style="">
-</colgroup>
-<tbody>
-<tr>
-<th>テーブル名</th>
-<td>t_brands</td>
-</tr>
-<tr>
-<th>備考</th>
-<td>ブランド</td>
-</tr>
-</tbody>
-</table>
-<table class="table table-condensed">
-<colgroup>
-<col style="width:3em;">
-<col style="max-width:50%;">
-<col style="max-width:50%;">
-<col style="width:4em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="">
-</colgroup>
-<thead><tr style="white-space:nowrap;">
-<th class="text-right">#</th>
-<th>物理名</th>
-<th>型</th>
-<th>NULL</th>
-<th>初期値</th>
-<th>主キー</th>
-<th>ユニーク</th>
-<th>備考</th>
-</tr></thead>
-<tbody>
-<tr>
-<td class="text-right">1</td>
-<td>id</td>
-<td>bigint unsigned</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;">○</td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">2</td>
-<td>brand_id</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;">○</td>
-<td>取得元のブランドID</td>
-</tr>
-<tr>
-<td class="text-right">3</td>
-<td>brand_name</td>
-<td>varchar(255)</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>ブランド名</td>
-</tr>
-<tr>
-<td class="text-right">4</td>
-<td>maker_id</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>メーカーID</td>
-</tr>
-<tr>
-<td class="text-right">5</td>
-<td>official_site</td>
-<td>varchar(255)</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>公式サイトURL</td>
-</tr>
-<tr>
-<td class="text-right">6</td>
-<td>created_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">7</td>
-<td>updated_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="page">
-<table class="table table-bordered htable" style="margin-bottom:1em;">
-<colgroup>
-<col style="width:30%;">
-<col style="">
-</colgroup>
-<tbody>
-<tr>
-<th>テーブル名</th>
-<td>t_chats</td>
-</tr>
-<tr>
-<th>備考</th>
-<td>チャットメッセージ</td>
-</tr>
-</tbody>
-</table>
-<table class="table table-condensed">
-<colgroup>
-<col style="width:3em;">
-<col style="max-width:50%;">
-<col style="max-width:50%;">
-<col style="width:4em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="">
-</colgroup>
-<thead><tr style="white-space:nowrap;">
-<th class="text-right">#</th>
-<th>物理名</th>
-<th>型</th>
-<th>NULL</th>
-<th>初期値</th>
-<th>主キー</th>
-<th>ユニーク</th>
-<th>備考</th>
-</tr></thead>
-<tbody>
-<tr>
-<td class="text-right">1</td>
-<td>id</td>
-<td>bigint unsigned</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;">○</td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">2</td>
-<td>thread_id</td>
-<td>varchar(128)</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>ChatGPTのスレッドID</td>
-</tr>
-<tr>
-<td class="text-right">3</td>
-<td>role</td>
-<td>varchar(32)</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>送信者の役割、user、botなどが入る</td>
-</tr>
-<tr>
-<td class="text-right">4</td>
-<td>message</td>
-<td>text</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>メッセージ</td>
-</tr>
-<tr>
-<td class="text-right">5</td>
-<td>created_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">6</td>
-<td>updated_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="page">
-<table class="table table-bordered htable" style="margin-bottom:1em;">
-<colgroup>
-<col style="width:30%;">
-<col style="">
-</colgroup>
-<tbody>
-<tr>
-<th>テーブル名</th>
-<td>t_makers</td>
-</tr>
-<tr>
-<th>備考</th>
-<td>メーカー</td>
-</tr>
-</tbody>
-</table>
-<table class="table table-condensed">
-<colgroup>
-<col style="width:3em;">
-<col style="max-width:50%;">
-<col style="max-width:50%;">
-<col style="width:4em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="">
-</colgroup>
-<thead><tr style="white-space:nowrap;">
-<th class="text-right">#</th>
-<th>物理名</th>
-<th>型</th>
-<th>NULL</th>
-<th>初期値</th>
-<th>主キー</th>
-<th>ユニーク</th>
-<th>備考</th>
-</tr></thead>
-<tbody>
-<tr>
-<td class="text-right">1</td>
-<td>id</td>
-<td>bigint unsigned</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;">○</td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">2</td>
-<td>maker_id</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;">○</td>
-<td>取得元のメーカーID</td>
-</tr>
-<tr>
-<td class="text-right">3</td>
-<td>maker_name</td>
-<td>varchar(255)</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>メーカー名</td>
-</tr>
-<tr>
-<td class="text-right">4</td>
-<td>created_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">5</td>
-<td>updated_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="page">
-<table class="table table-bordered htable" style="margin-bottom:1em;">
-<colgroup>
-<col style="width:30%;">
-<col style="">
-</colgroup>
-<tbody>
-<tr>
-<th>テーブル名</th>
-<td>t_products</td>
-</tr>
-<tr>
-<th>備考</th>
-<td>商品情報</td>
-</tr>
-</tbody>
-</table>
-<table class="table table-condensed">
-<colgroup>
-<col style="width:3em;">
-<col style="max-width:50%;">
-<col style="max-width:50%;">
-<col style="width:4em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="">
-</colgroup>
-<thead><tr style="white-space:nowrap;">
-<th class="text-right">#</th>
-<th>物理名</th>
-<th>型</th>
-<th>NULL</th>
-<th>初期値</th>
-<th>主キー</th>
-<th>ユニーク</th>
-<th>備考</th>
-</tr></thead>
-<tbody>
-<tr>
-<td class="text-right">1</td>
-<td>id</td>
-<td>bigint unsigned</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;">○</td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">2</td>
-<td>product_id</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;">○</td>
-<td>取得元の商品ID</td>
-</tr>
-<tr>
-<td class="text-right">3</td>
-<td>product_name</td>
-<td>varchar(255)</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>商品名</td>
-</tr>
-<tr>
-<td class="text-right">4</td>
-<td>maker_id</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>メーカーID</td>
-</tr>
-<tr>
-<td class="text-right">5</td>
-<td>brand_id</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>ブランドID</td>
-</tr>
-<tr>
-<td class="text-right">6</td>
-<td>category1_id</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>カテゴリ1ID</td>
-</tr>
-<tr>
-<td class="text-right">7</td>
-<td>category2_id</td>
-<td>int</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>カテゴリ2ID</td>
-</tr>
-<tr>
-<td class="text-right">8</td>
-<td>jan_code</td>
-<td>varchar(255)</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>JANコード、未設定の場合有り</td>
-</tr>
-<tr>
-<td class="text-right">9</td>
-<td>release_date</td>
-<td>date</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>発売日</td>
-</tr>
-<tr>
-<td class="text-right">10</td>
-<td>release_date_additional</td>
-<td>date</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>追加発売日</td>
-</tr>
-<tr>
-<td class="text-right">11</td>
-<td>rating</td>
-<td>double</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>レビュー点数</td>
-</tr>
-<tr>
-<td class="text-right">12</td>
-<td>points</td>
-<td>double</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>評価ポイント</td>
-</tr>
-<tr>
-<td class="text-right">13</td>
-<td>review_count</td>
-<td>int</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>レビュー数</td>
-</tr>
-<tr>
-<td class="text-right">14</td>
-<td>is_best_cosme</td>
-<td>tinyint(1)</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>ベストコスメ受賞有無</td>
-</tr>
-<tr>
-<td class="text-right">15</td>
-<td>is_rankin_cosme</td>
-<td>tinyint(1)</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>ランキンコスメ受賞有無</td>
-</tr>
-<tr>
-<td class="text-right">16</td>
-<td>price_with_tax</td>
-<td>int</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>税込価格</td>
-</tr>
-<tr>
-<td class="text-right">17</td>
-<td>net_content</td>
-<td>varchar(255)</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>内容量</td>
-</tr>
-<tr>
-<td class="text-right">18</td>
-<td>description</td>
-<td>text</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>商品説明</td>
-</tr>
-<tr>
-<td class="text-right">19</td>
-<td>ingredients</td>
-<td>text</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>成分</td>
-</tr>
-<tr>
-<td class="text-right">20</td>
-<td>how_to_use</td>
-<td>text</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>使用方法</td>
-</tr>
-<tr>
-<td class="text-right">21</td>
-<td>features</td>
-<td>text</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>特徴</td>
-</tr>
-<tr>
-<td class="text-right">22</td>
-<td>caution</td>
-<td>text</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>注意事項</td>
-</tr>
-<tr>
-<td class="text-right">23</td>
-<td>buy_url</td>
-<td>varchar(255)</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>購入URL</td>
-</tr>
-<tr>
-<td class="text-right">24</td>
-<td>created_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">25</td>
-<td>updated_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="page">
-<table class="table table-bordered htable" style="margin-bottom:1em;">
-<colgroup>
-<col style="width:30%;">
-<col style="">
-</colgroup>
-<tbody>
-<tr>
-<th>テーブル名</th>
-<td>t_reviews</td>
-</tr>
-<tr>
-<th>備考</th>
-<td>レビュー</td>
-</tr>
-</tbody>
-</table>
-<table class="table table-condensed">
-<colgroup>
-<col style="width:3em;">
-<col style="max-width:50%;">
-<col style="max-width:50%;">
-<col style="width:4em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="width:5em;">
-<col style="">
-</colgroup>
-<thead><tr style="white-space:nowrap;">
-<th class="text-right">#</th>
-<th>物理名</th>
-<th>型</th>
-<th>NULL</th>
-<th>初期値</th>
-<th>主キー</th>
-<th>ユニーク</th>
-<th>備考</th>
-</tr></thead>
-<tbody>
-<tr>
-<td class="text-right">1</td>
-<td>id</td>
-<td>bigint unsigned</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;">○</td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">2</td>
-<td>review_id</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;">○</td>
-<td>取得元のレビューID</td>
-</tr>
-<tr>
-<td class="text-right">3</td>
-<td>reviewer_id</td>
-<td>int</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>レビュアーID</td>
-</tr>
-<tr>
-<td class="text-right">4</td>
-<td>reviewer_name</td>
-<td>varchar(255)</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>レビュアー名</td>
-</tr>
-<tr>
-<td class="text-right">5</td>
-<td>followers_level</td>
-<td>int</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>フォロワー数のレベル 〜名以上という意味</td>
-</tr>
-<tr>
-<td class="text-right">6</td>
-<td>reviews_count</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>レビューアーの総レビュー数</td>
-</tr>
-<tr>
-<td class="text-right">7</td>
-<td>reviewer_age</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>レビュアーの年齢</td>
-</tr>
-<tr>
-<td class="text-right">8</td>
-<td>reviewer_skin_type</td>
-<td>varchar(255)</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>レビュアーの肌質</td>
-</tr>
-<tr>
-<td class="text-right">9</td>
-<td>product_id</td>
-<td>int</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>商品ID</td>
-</tr>
-<tr>
-<td class="text-right">10</td>
-<td>method_of_acquisition</td>
-<td>varchar(255)</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>入手方法</td>
-</tr>
-<tr>
-<td class="text-right">11</td>
-<td>rating</td>
-<td>double</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>レビュー点数</td>
-</tr>
-<tr>
-<td class="text-right">12</td>
-<td>effects</td>
-<td>varchar(255)</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>効果、、「|」区切りで複数登録</td>
-</tr>
-<tr>
-<td class="text-right">13</td>
-<td>review_content</td>
-<td>text</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>レビュー内容</td>
-</tr>
-<tr>
-<td class="text-right">14</td>
-<td>published_at</td>
-<td>timestamp</td>
-<td style="text-align:center;"></td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td>レビュー投稿日時</td>
-</tr>
-<tr>
-<td class="text-right">15</td>
-<td>created_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-<tr>
-<td class="text-right">16</td>
-<td>updated_at</td>
-<td>timestamp</td>
-<td style="text-align:center;">○</td>
-<td></td>
-<td style="text-align:center;"></td>
-<td style="text-align:center;"></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</body>
-</html>
 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+	<meta charset="utf-8">
+	<title>テーブル定義</title>
+	<style>
+		.page {
+			width: 960px;
+			margin: 0 auto 100px auto;
+		}
+
+		table {
+			width: 100%;
+			table-layout: fixed;
+			border-collapse: collapse;
+		}
+
+		th,
+		td {
+			word-wrap: break-word;
+			border: 1px solid #999;
+		}
+
+		@media print {
+			.page {
+				width: 100%;
+				margin: 0;
+				page-break-after: always;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="page" style="text-align:center;">
+		<h1 style="padding:30mm 0;">テーブル定義書</h1>
+	</div>
+	<div class="page">
+		<table class="table table-bordered htable" style="margin-bottom:1em;">
+			<colgroup>
+				<col style="width:30%;">
+				<col style="">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>テーブル名</th>
+					<td>m_categories</td>
+				</tr>
+				<tr>
+					<th>備考</th>
+					<td>カテゴリ</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-condensed">
+			<colgroup>
+				<col style="width:3em;">
+				<col style="max-width:50%;">
+				<col style="max-width:50%;">
+				<col style="width:4em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="">
+			</colgroup>
+			<thead>
+				<tr style="white-space:nowrap;">
+					<th class="text-right">#</th>
+					<th>物理名</th>
+					<th>型</th>
+					<th>NULL</th>
+					<th>初期値</th>
+					<th>主キー</th>
+					<th>ユニーク</th>
+					<th>備考</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-right">1</td>
+					<td>category_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;">○</td>
+					<td style="text-align:center;"></td>
+					<td>取得元のカテゴリID</td>
+				</tr>
+				<tr>
+					<td class="text-right">2</td>
+					<td>category_name</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>カテゴリ名</td>
+				</tr>
+				<tr>
+					<td class="text-right">3</td>
+					<td>created_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">4</td>
+					<td>updated_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="page">
+		<table class="table table-bordered htable" style="margin-bottom:1em;">
+			<colgroup>
+				<col style="width:30%;">
+				<col style="">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>テーブル名</th>
+					<td>m_rakuten_genres</td>
+				</tr>
+				<tr>
+					<th>備考</th>
+					<td>楽天ジャンル</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-condensed">
+			<colgroup>
+				<col style="width:3em;">
+				<col style="max-width:50%;">
+				<col style="max-width:50%;">
+				<col style="width:4em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="">
+			</colgroup>
+			<thead>
+				<tr style="white-space:nowrap;">
+					<th class="text-right">#</th>
+					<th>物理名</th>
+					<th>型</th>
+					<th>NULL</th>
+					<th>初期値</th>
+					<th>主キー</th>
+					<th>ユニーク</th>
+					<th>備考</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-right">1</td>
+					<td>genre_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;">○</td>
+					<td style="text-align:center;"></td>
+					<td>楽天ジャンルID</td>
+				</tr>
+				<tr>
+					<td class="text-right">2</td>
+					<td>genre_name</td>
+					<td>varchar(128)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>楽天ジャンル名</td>
+				</tr>
+				<tr>
+					<td class="text-right">3</td>
+					<td>genre_level</td>
+					<td>tinyint</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ジャンル階層、1:トップカテゴリ、以下、最大5層まで。</td>
+				</tr>
+				<tr>
+					<td class="text-right">4</td>
+					<td>parent_genre_id</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>親ジャンルID。トップカテゴリの場合はNULL。</td>
+				</tr>
+				<tr>
+					<td class="text-right">5</td>
+					<td>created_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">6</td>
+					<td>updated_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="page">
+		<table class="table table-bordered htable" style="margin-bottom:1em;">
+			<colgroup>
+				<col style="width:30%;">
+				<col style="">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>テーブル名</th>
+					<td>t_brands</td>
+				</tr>
+				<tr>
+					<th>備考</th>
+					<td>ブランド</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-condensed">
+			<colgroup>
+				<col style="width:3em;">
+				<col style="max-width:50%;">
+				<col style="max-width:50%;">
+				<col style="width:4em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="">
+			</colgroup>
+			<thead>
+				<tr style="white-space:nowrap;">
+					<th class="text-right">#</th>
+					<th>物理名</th>
+					<th>型</th>
+					<th>NULL</th>
+					<th>初期値</th>
+					<th>主キー</th>
+					<th>ユニーク</th>
+					<th>備考</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-right">1</td>
+					<td>brand_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;">○</td>
+					<td style="text-align:center;"></td>
+					<td>取得元のブランドID</td>
+				</tr>
+				<tr>
+					<td class="text-right">2</td>
+					<td>brand_name</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ブランド名</td>
+				</tr>
+				<tr>
+					<td class="text-right">3</td>
+					<td>maker_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>メーカーID</td>
+				</tr>
+				<tr>
+					<td class="text-right">4</td>
+					<td>official_site</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>公式サイトURL</td>
+				</tr>
+				<tr>
+					<td class="text-right">5</td>
+					<td>created_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">6</td>
+					<td>updated_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="page">
+		<table class="table table-bordered htable" style="margin-bottom:1em;">
+			<colgroup>
+				<col style="width:30%;">
+				<col style="">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>テーブル名</th>
+					<td>t_chats</td>
+				</tr>
+				<tr>
+					<th>備考</th>
+					<td>チャットメッセージ</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-condensed">
+			<colgroup>
+				<col style="width:3em;">
+				<col style="max-width:50%;">
+				<col style="max-width:50%;">
+				<col style="width:4em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="">
+			</colgroup>
+			<thead>
+				<tr style="white-space:nowrap;">
+					<th class="text-right">#</th>
+					<th>物理名</th>
+					<th>型</th>
+					<th>NULL</th>
+					<th>初期値</th>
+					<th>主キー</th>
+					<th>ユニーク</th>
+					<th>備考</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-right">1</td>
+					<td>id</td>
+					<td>bigint unsigned</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;">○</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">2</td>
+					<td>thread_id</td>
+					<td>varchar(128)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ChatGPTのスレッドID</td>
+				</tr>
+				<tr>
+					<td class="text-right">3</td>
+					<td>role</td>
+					<td>varchar(32)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>送信者の役割、user、botなどが入る</td>
+				</tr>
+				<tr>
+					<td class="text-right">4</td>
+					<td>message</td>
+					<td>text</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>メッセージ</td>
+				</tr>
+				<tr>
+					<td class="text-right">5</td>
+					<td>created_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">6</td>
+					<td>updated_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="page">
+		<table class="table table-bordered htable" style="margin-bottom:1em;">
+			<colgroup>
+				<col style="width:30%;">
+				<col style="">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>テーブル名</th>
+					<td>t_makers</td>
+				</tr>
+				<tr>
+					<th>備考</th>
+					<td>メーカー</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-condensed">
+			<colgroup>
+				<col style="width:3em;">
+				<col style="max-width:50%;">
+				<col style="max-width:50%;">
+				<col style="width:4em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="">
+			</colgroup>
+			<thead>
+				<tr style="white-space:nowrap;">
+					<th class="text-right">#</th>
+					<th>物理名</th>
+					<th>型</th>
+					<th>NULL</th>
+					<th>初期値</th>
+					<th>主キー</th>
+					<th>ユニーク</th>
+					<th>備考</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-right">1</td>
+					<td>maker_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;">○</td>
+					<td style="text-align:center;"></td>
+					<td>取得元のメーカーID</td>
+				</tr>
+				<tr>
+					<td class="text-right">2</td>
+					<td>maker_name</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>メーカー名</td>
+				</tr>
+				<tr>
+					<td class="text-right">3</td>
+					<td>created_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">4</td>
+					<td>updated_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="page">
+		<table class="table table-bordered htable" style="margin-bottom:1em;">
+			<colgroup>
+				<col style="width:30%;">
+				<col style="">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>テーブル名</th>
+					<td>t_products</td>
+				</tr>
+				<tr>
+					<th>備考</th>
+					<td>商品情報</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-condensed">
+			<colgroup>
+				<col style="width:3em;">
+				<col style="max-width:50%;">
+				<col style="max-width:50%;">
+				<col style="width:4em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="">
+			</colgroup>
+			<thead>
+				<tr style="white-space:nowrap;">
+					<th class="text-right">#</th>
+					<th>物理名</th>
+					<th>型</th>
+					<th>NULL</th>
+					<th>初期値</th>
+					<th>主キー</th>
+					<th>ユニーク</th>
+					<th>備考</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-right">1</td>
+					<td>product_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;">○</td>
+					<td style="text-align:center;"></td>
+					<td>取得元の商品ID</td>
+				</tr>
+				<tr>
+					<td class="text-right">2</td>
+					<td>product_name</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品名</td>
+				</tr>
+				<tr>
+					<td class="text-right">3</td>
+					<td>maker_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>メーカーID</td>
+				</tr>
+				<tr>
+					<td class="text-right">4</td>
+					<td>brand_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ブランドID</td>
+				</tr>
+				<tr>
+					<td class="text-right">5</td>
+					<td>category1_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>カテゴリ1ID</td>
+				</tr>
+				<tr>
+					<td class="text-right">6</td>
+					<td>category2_id</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>カテゴリ2ID</td>
+				</tr>
+				<tr>
+					<td class="text-right">7</td>
+					<td>jan_code</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>JANコード、未設定の場合有り</td>
+				</tr>
+				<tr>
+					<td class="text-right">8</td>
+					<td>release_date</td>
+					<td>date</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>発売日</td>
+				</tr>
+				<tr>
+					<td class="text-right">9</td>
+					<td>release_date_additional</td>
+					<td>date</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>追加発売日</td>
+				</tr>
+				<tr>
+					<td class="text-right">10</td>
+					<td>rating</td>
+					<td>double</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>レビュー点数</td>
+				</tr>
+				<tr>
+					<td class="text-right">11</td>
+					<td>points</td>
+					<td>double</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>評価ポイント</td>
+				</tr>
+				<tr>
+					<td class="text-right">12</td>
+					<td>review_count</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>レビュー数</td>
+				</tr>
+				<tr>
+					<td class="text-right">13</td>
+					<td>is_best_cosme</td>
+					<td>tinyint(1)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ベストコスメ受賞有無</td>
+				</tr>
+				<tr>
+					<td class="text-right">14</td>
+					<td>is_rankin_cosme</td>
+					<td>tinyint(1)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ランキンコスメ受賞有無</td>
+				</tr>
+				<tr>
+					<td class="text-right">15</td>
+					<td>price_with_tax</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>税込価格</td>
+				</tr>
+				<tr>
+					<td class="text-right">16</td>
+					<td>net_content</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>内容量</td>
+				</tr>
+				<tr>
+					<td class="text-right">17</td>
+					<td>description</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品説明</td>
+				</tr>
+				<tr>
+					<td class="text-right">18</td>
+					<td>ingredients</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>成分</td>
+				</tr>
+				<tr>
+					<td class="text-right">19</td>
+					<td>how_to_use</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>使用方法</td>
+				</tr>
+				<tr>
+					<td class="text-right">20</td>
+					<td>features</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>特徴</td>
+				</tr>
+				<tr>
+					<td class="text-right">21</td>
+					<td>caution</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>注意事項</td>
+				</tr>
+				<tr>
+					<td class="text-right">22</td>
+					<td>buy_url</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>購入URL</td>
+				</tr>
+				<tr>
+					<td class="text-right">23</td>
+					<td>created_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">24</td>
+					<td>updated_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="page">
+		<table class="table table-bordered htable" style="margin-bottom:1em;">
+			<colgroup>
+				<col style="width:30%;">
+				<col style="">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>テーブル名</th>
+					<td>t_reviews</td>
+				</tr>
+				<tr>
+					<th>備考</th>
+					<td>レビュー</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-condensed">
+			<colgroup>
+				<col style="width:3em;">
+				<col style="max-width:50%;">
+				<col style="max-width:50%;">
+				<col style="width:4em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="">
+			</colgroup>
+			<thead>
+				<tr style="white-space:nowrap;">
+					<th class="text-right">#</th>
+					<th>物理名</th>
+					<th>型</th>
+					<th>NULL</th>
+					<th>初期値</th>
+					<th>主キー</th>
+					<th>ユニーク</th>
+					<th>備考</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-right">1</td>
+					<td>review_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;">○</td>
+					<td style="text-align:center;"></td>
+					<td>取得元のレビューID</td>
+				</tr>
+				<tr>
+					<td class="text-right">2</td>
+					<td>reviewer_id</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>レビュアーID</td>
+				</tr>
+				<tr>
+					<td class="text-right">3</td>
+					<td>reviewer_name</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>レビュアー名</td>
+				</tr>
+				<tr>
+					<td class="text-right">4</td>
+					<td>followers_level</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>フォロワー数のレベル 〜名以上という意味</td>
+				</tr>
+				<tr>
+					<td class="text-right">5</td>
+					<td>reviews_count</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>レビューアーの総レビュー数</td>
+				</tr>
+				<tr>
+					<td class="text-right">6</td>
+					<td>reviewer_age</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>レビュアーの年齢</td>
+				</tr>
+				<tr>
+					<td class="text-right">7</td>
+					<td>reviewer_skin_type</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>レビュアーの肌質</td>
+				</tr>
+				<tr>
+					<td class="text-right">8</td>
+					<td>product_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品ID</td>
+				</tr>
+				<tr>
+					<td class="text-right">9</td>
+					<td>method_of_acquisition</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>入手方法</td>
+				</tr>
+				<tr>
+					<td class="text-right">10</td>
+					<td>rating</td>
+					<td>double</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>レビュー点数</td>
+				</tr>
+				<tr>
+					<td class="text-right">11</td>
+					<td>effects</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>効果、、「|」区切りで複数登録</td>
+				</tr>
+				<tr>
+					<td class="text-right">12</td>
+					<td>review_content</td>
+					<td>text</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>レビュー内容</td>
+				</tr>
+				<tr>
+					<td class="text-right">13</td>
+					<td>published_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>レビュー投稿日時</td>
+				</tr>
+				<tr>
+					<td class="text-right">14</td>
+					<td>created_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">15</td>
+					<td>updated_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="page">
+		<table class="table table-bordered htable" style="margin-bottom:1em;">
+			<colgroup>
+				<col style="width:30%;">
+				<col style="">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>テーブル名</th>
+					<td>t_valiations</td>
+				</tr>
+				<tr>
+					<th>備考</th>
+					<td>バリエーション</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-condensed">
+			<colgroup>
+				<col style="width:3em;">
+				<col style="max-width:50%;">
+				<col style="max-width:50%;">
+				<col style="width:4em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="">
+			</colgroup>
+			<thead>
+				<tr style="white-space:nowrap;">
+					<th class="text-right">#</th>
+					<th>物理名</th>
+					<th>型</th>
+					<th>NULL</th>
+					<th>初期値</th>
+					<th>主キー</th>
+					<th>ユニーク</th>
+					<th>備考</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-right">1</td>
+					<td>valiation_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;">○</td>
+					<td style="text-align:center;"></td>
+					<td>バリエーションID</td>
+				</tr>
+				<tr>
+					<td class="text-right">2</td>
+					<td>product_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品ID</td>
+				</tr>
+				<tr>
+					<td class="text-right">3</td>
+					<td>valiation_name</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>バリエーション名</td>
+				</tr>
+				<tr>
+					<td class="text-right">4</td>
+					<td>extension</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>拡張子、「.」を含まない</td>
+				</tr>
+				<tr>
+					<td class="text-right">5</td>
+					<td>r</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>RGBのR値</td>
+				</tr>
+				<tr>
+					<td class="text-right">6</td>
+					<td>g</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>RGBのG値</td>
+				</tr>
+				<tr>
+					<td class="text-right">7</td>
+					<td>b</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>RGBのB値</td>
+				</tr>
+				<tr>
+					<td class="text-right">8</td>
+					<td>hex_color_code</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>16進数カラーコード「#FFEECC」の形式</td>
+				</tr>
+				<tr>
+					<td class="text-right">9</td>
+					<td>is_active</td>
+					<td>tinyint(1)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>現在有効なバリエーション化どうか</td>
+				</tr>
+				<tr>
+					<td class="text-right">10</td>
+					<td>pre_hex_color_code</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>カラーチェックで変更された場合、変更前のカラーが入る。</td>
+				</tr>
+				<tr>
+					<td class="text-right">11</td>
+					<td>checked_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>カラーチェックを実施した日時</td>
+				</tr>
+				<tr>
+					<td class="text-right">12</td>
+					<td>created_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">13</td>
+					<td>updated_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

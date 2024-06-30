@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('t_reviews', function (Blueprint $table) {
             $table->comment('レビュー');
-            $table->id();
 
-            $table->integer('review_id')->comment('取得元のレビューID')->unique();
+            $table->integer('review_id')->primary()->comment('取得元のレビューID');
             $table->integer('reviewer_id')->nullable()->comment('レビュアーID');
             $table->string('reviewer_name')->comment('レビュアー名');
             $table->integer('followers_level')->nullable()->comment('フォロワー数のレベル 〜名以上という意味');

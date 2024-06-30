@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('t_valiations', function (Blueprint $table) {
             $table->comment('バリエーション');
-            $table->id();
 
-            $table->integer('valiation_id')->comment('バリエーションID')->unique();
+            $table->integer('valiation_id')->primary()->comment('バリエーションID');
             $table->integer('product_id')->comment('商品ID')->index();
             $table->string('valiation_name')->comment('バリエーション名');
             $table->string('extension')->nullable()->comment('拡張子、「.」を含まない');

@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('m_categories', function (Blueprint $table) {
             $table->comment('カテゴリ');
-            $table->id();
 
-            $table->integer('category_id')->unique()->comment('取得元のカテゴリID');
+            $table->integer('category_id')->primary()->comment('取得元のカテゴリID');
             $table->string('category_name')->comment('カテゴリ名');
 
             $table->timestamps();
