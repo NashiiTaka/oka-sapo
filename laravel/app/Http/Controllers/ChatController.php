@@ -33,16 +33,6 @@ class ChatController extends Controller
             ],
             'multiple' => false
         ],
-        'ask-purpose' => [
-            'message' => "今回の購入目的を教えていただけますか？",
-            'options' => [
-                ['display' => '良さげなものだったら新しいアイテムが欲しい。', 'goto' => '/chat/price-select'],
-                ['display' => '今使用しているものがなくなりそう。', 'goto' => '/chat/price-select'],
-                ['display' => '今使用しているものに不満、またはお悩みやトラブルがある。', 'goto' => '/chat/price-select'],
-                ['display' => '印象を変えたい。', 'goto' => '/chat/price-select'],
-            ],
-            'multiple' => false
-        ],
         'price-select' => [
             'message' => "１本あたりの予算はどれくらいでしょうか？",
             'options' => [
@@ -53,6 +43,58 @@ class ChatController extends Controller
             ],
             'multiple' => false
         ],
+        // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+        'ask-purpose' => [
+            'message' => "今回の購入目的を教えていただけますか？",
+            'options' => [
+                ['display' => '良さげなものだったら新しいアイテムが欲しい。', 'goto' => '/chat/best-one-lead'],
+                ['display' => '今使用しているものがなくなりそう。', 'goto' => '/chat/repeat'], 
+                ['display' => '今使用しているものに不満、またはお悩みやトラブルがある。', 'goto' => '/chat/now-use'],
+                ['display' => '印象を変えたい。', 'goto' => '/chat/impression'],
+            ],
+            'multiple' => false
+        ],
+        'repeat' => [
+            'message' => "リピート購入しますか？",
+            'options' => [
+                ['display' => 'はい。', 'goto' => '/chat/repeat-buy'], //ここまだ
+            ],
+            'multiple' => false
+        ],
+        'repeat-buy' => [
+            'message' => "リピート購入しますか？",
+            'options' => [
+                ['display' => 'メーカー、商品名色番号を教えてください。', 'goto' => '/chat/'], //ここのページ打ち込み型にする？
+            ],
+            'multiple' => false
+        ],
+        'now-use' => [
+            'message' => "今使っているもののメーカー、商品名、色番号を教えてください。",
+            'options' => [
+                ['display' => 'メーカー、商品名色番号を教えてください。', 'goto' => '/chat/nayami'], //ここのページ打ち込み型にする？
+            ],
+            'multiple' => false
+        ],
+        'nayami' => [
+            'message' => "具体的にはどんな不満やお悩みがありますか？",
+            'options' => [
+                ['display' => '色持ちが悪い', 'goto' => '/osusume'], //ここまだ
+                ['display' => '乾燥する', 'goto' => '/osusume'], //ここまだ
+                ['display' => '唇の色ムラ', 'goto' => '/osusume'], //ここまだ
+                ['display' => '縦じわ', 'goto' => '/osusume'], //ここまだ
+                ['display' => '合わない成分がある', 'goto' => '/chat/seibun'], 
+            ],
+            'multiple' => false
+        ],
+        'nayami' => [
+            'message' => "具体的にはどんな不満やお悩みがありますか？",//今ここ
+            'options' => [
+                ['display' => 'ミツロウ、パラペン、など', 'goto' => '/chat/'], //ここのページ打ち込み型にする？
+
+            ],
+            'multiple' => false
+        ],
+        // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
         'scene-select' => [
             'message' => "今回お探しのアイテムは、普段使いですか？それとも特別な日のためにお探しですか？",
             'options' => [
@@ -81,7 +123,6 @@ class ChatController extends Controller
             ],
             'multiple' => false
         ],
-
     ];
 
 
@@ -90,6 +131,33 @@ class ChatController extends Controller
     {
         return $this->chat('index');
     }
+
+    public function osusume()
+    {
+        // return $this->chat('index');
+        $recommendations = TProduct::getRecommendations([]);
+        
+        // $hairetsu = [];
+        // $hairetsu = array();
+
+        // // 普通の配列
+        // $hairetsu = [1, 5, 7, 4, 3, 2, 6, 8, 9, 10];
+        // $hairetsu[0] = 1;
+        // print($hairetsu[1]);
+
+        // $mojiHairetsu = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+        
+        // // 連想配列
+        $rensouHairetsu = [
+            'name' => '山田太郎',
+            'age' => 20,
+            'recommendations' => $recommendations
+        ];
+        // $rensouHairetsu['name'] = '山田花子';
+
+        return view('osusume', $rensouHairetsu);
+    }
+
 
     // Routeに以下の指定をしておくと、
     // Route::get('/chat/{message}', [ChatController::class, 'chat']);
@@ -105,6 +173,13 @@ class ChatController extends Controller
         $multiple = $thisMessage['multiple'];
 
         return view('singleanswer', compact('message', 'options', 'multiple'));
+
+        return view('singleanswer', [
+            'message' => $message,
+            'options' => $options,
+            'multiple' => $multiple
+        ]);
+
     }
 
     public function passer(Request $request)
