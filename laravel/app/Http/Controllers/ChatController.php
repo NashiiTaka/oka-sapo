@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\App;
 use App\Models\TChat;
+use App\Models\TProduct;
 use Exception;
 
 
@@ -61,7 +62,7 @@ class ChatController extends Controller
         }
 
         try {
-            $order = "node " . base_path() . "/node/openai.mjs \"$trimmedPostedMessage\" \"$trimmedPostedThreadId\"";
+            $order = "node " . base_path() . "/util/openai.mjs \"$trimmedPostedMessage\" \"$trimmedPostedThreadId\"";
             $openAiRet = exec($order, $output);
 
             $ret = json_decode($openAiRet, true);

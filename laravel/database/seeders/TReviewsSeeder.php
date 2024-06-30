@@ -14,7 +14,7 @@ class TReviewsSeeder extends CsvSeeder
     public function __construct()
     {
         $this->table = 't_reviews';
-        $this->filename = base_path() . '/node/outcsv/t_reviews.csv';
+        $this->filename = base_path() . '/util/outcsv/t_reviews.csv';
         $this->timestamps = true;
     }
 

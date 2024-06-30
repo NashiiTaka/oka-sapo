@@ -15,7 +15,7 @@ class TProductsSeeder extends CsvSeeder
     public function __construct()
     {
         $this->table = 't_products';
-        $this->filename = base_path() . '/node/outcsv/t_products.csv';
+        $this->filename = base_path() . '/util/outcsv/t_products.csv';
         $this->timestamps = true;
     }
 

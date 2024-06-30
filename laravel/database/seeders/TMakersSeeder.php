@@ -14,7 +14,7 @@ class TMakersSeeder extends CsvSeeder
     public function __construct()
     {
         $this->table = 't_makers';
-        $this->filename = base_path() . '/node/outcsv/t_makers.csv';
+        $this->filename = base_path() . '/util/outcsv/t_makers.csv';
         $this->timestamps = true;
     }
 
