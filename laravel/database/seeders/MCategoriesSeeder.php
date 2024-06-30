@@ -14,7 +14,7 @@ class MCategoriesSeeder extends CsvSeeder
     public function __construct()
     {
         $this->table = 'm_categories';
-        $this->filename = base_path() . '/node/outcsv/m_categories.csv';
+        $this->filename = base_path() . '/util/outcsv/m_categories.csv';
         $this->timestamps = true;
     }
 

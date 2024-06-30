@@ -4,9 +4,9 @@ import { outputCsv } from './util.mjs';
 import XLSX from 'xlsx';
 
 const jsonFiles = [
-    `${process.cwd()}/node/datas/reviews/アットコスメ_リップ_レビュー.json`,
-    `${process.cwd()}/node/datas/reviews/アットコスメ_リップ_レビュー_再開.json`,
-    `${process.cwd()}/node/datas/reviews/アットコスメ_リップ_レビュー_再開2.json`,
+    `${process.cwd()}/util/datas/reviews/アットコスメ_リップ_レビュー.json`,
+    `${process.cwd()}/util/datas/reviews/アットコスメ_リップ_レビュー_再開.json`,
+    `${process.cwd()}/util/datas/reviews/アットコスメ_リップ_レビュー_再開2.json`,
 ];
 
 // 例外的なデータ。キーにreview_id、値に[キー:修正対象キー名、値:修正後の値]を持つオブジェクト

@@ -87,6 +87,24 @@ for (const json of jsonData) {
         if (mapping[mapKey] === 'brand_url') {
             converted['brand_id'] = json[mapKey].match(/https\:\/\/www.cosme\.net\/brands\/(\d+)\//)[1];
         }
+
+        if (mapKey === 'フィールド1') {
+            const dom = new JSDOM(json[mapKey]);
+            const values = [];
+            dom.window.document.querySelectorAll('li').forEach((li) => {
+                const value = {};
+                // 色の名前を取得する
+                value.valiation_name = li.textContent.trim();
+                // 画像のURLを取得する。パラメータは除去する
+                value.img_src = li.querySelector('img').src.split('?')[0];
+                // バリエーションIDを取得する
+                value.valiation_id = li.querySelector('a').href.match('\\d+')[0];
+                // バリエーション情報を追加する
+                values.push(value);
+            });
+
+            converted['valiations'] = values;
+        }
     }
     const dom = new JSDOM(converted['detail_info_html']);
     dom.window.document.querySelectorAll('dl').forEach((dl) => {
@@ -135,11 +153,6 @@ for (const json of jsonData) {
     console.log(converted.product_name);
 }
 
-const makers = [];
-const brands = [];
-const categories = [];
-const products = [];
-
 /**
  * 出力用のカテゴリを追加する。常にカテゴリIDを返す。
  * @param {string} categoryName 
@@ -161,6 +174,12 @@ function addCategoryIfNeeds(categoryName, categoryUrl) {
 
     return category_id;
 }
+
+const makers = [];
+const brands = [];
+const categories = [];
+const products = [];
+const valiations = [];
 
 for (const converted of convertedArr) {
     // メーカーIDが欠損したデータがあったので、その場合は他の行の同ブランドから、メーカーIDを取得する
@@ -188,33 +207,30 @@ for (const converted of convertedArr) {
     const category1_id = addCategoryIfNeeds(converted.category1_name, converted.category1_url);
     const category2_id = addCategoryIfNeeds(converted.category2_name, converted.category2_url);
 
+    // 商品情報を作成
+    const product_id = converted.product_url.match(/https\:\/\/www\.cosme\.net\/products\/(\d+)\//)[1];
     let release_date_additional = null;
     try {
         release_date_additional = converted.release_date.match(/(\d+\/\d+\/\d+)追加発売/)[1];
     } catch (e) {
     }
-
     let release_date = null;
     try {
         release_date = converted.release_date.match(/発売日：(\d+\/\d+\/\d+)/)[1];
     } catch (e) {
     }
-
     let price_with_tax = null;
     try {
         price_with_tax = Number.parseInt(converted.price.match(/([\d,]+)円/)[1].replace(/,/g, ''));
     } catch (e) {
     }
-
     let net_content = null;
     try {
         net_content = converted.price.match(/容量.*：([^・]+).*$/)[1];
     } catch (e) {
     }
-    
-    // 商品情報を作成
     products.push({
-        product_id: converted.product_url.match(/https\:\/\/www\.cosme\.net\/products\/(\d+)\//)[1],
+        product_id: product_id,
         product_name: converted.product_name,
         maker_id: converted.maker_id,
         brand_id: converted.brand_id,
@@ -237,11 +253,23 @@ for (const converted of convertedArr) {
         caution: converted.caution,
         buy_url: converted.buy_url,
     });
+
+    // バリエーション情報を作成
+    for (const validation of converted.valiations || []) {
+        if (!validation.valiation_name) { continue; }
+        valiations.push({
+            valiation_id: validation.valiation_id,
+            product_id: product_id,
+            valiation_name: validation.valiation_name,
+            img_src: validation.img_src,
+        });
+    }
 }
 outputCsv('t_makers', makers);
 outputCsv('t_brands', brands);
 outputCsv('m_categories', categories);
 outputCsv('t_products', products);
+outputCsv('valiations_source_imgs', valiations);
 
 // // Excel用に、300文字以上の文字列は300文字に切り詰める
 // for(const converted of convertedArr) {

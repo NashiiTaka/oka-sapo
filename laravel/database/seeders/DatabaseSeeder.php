@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             TBrandsSeeder::class,
             TMakersSeeder::class,
             MCategoriesSeeder::class,
-            TReviewsSeeder::class
+            TReviewsSeeder::class,
+            TValiationsSeeder::class,
         ]);
     }
 }
