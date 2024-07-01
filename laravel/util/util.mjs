@@ -10,3 +10,8 @@ export function outputCsv(baseName, data) {
         }
     });
 }
+
+// Sleep関数の定義
+export function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+};

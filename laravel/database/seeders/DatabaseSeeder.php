@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             MCategoriesSeeder::class,
             TReviewsSeeder::class,
             TValiationsSeeder::class,
+            MRakutenGenresSeeder::class,
+            TRakutenProductsSeeder::class,
         ]);
     }
 }

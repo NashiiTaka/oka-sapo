@@ -811,6 +811,530 @@
 			<tbody>
 				<tr>
 					<th>テーブル名</th>
+					<td>t_rakuten_products</td>
+				</tr>
+				<tr>
+					<th>備考</th>
+					<td>楽天商品</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-condensed">
+			<colgroup>
+				<col style="width:3em;">
+				<col style="max-width:50%;">
+				<col style="max-width:50%;">
+				<col style="width:4em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="">
+			</colgroup>
+			<thead>
+				<tr style="white-space:nowrap;">
+					<th class="text-right">#</th>
+					<th>物理名</th>
+					<th>型</th>
+					<th>NULL</th>
+					<th>初期値</th>
+					<th>主キー</th>
+					<th>ユニーク</th>
+					<th>備考</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-right">1</td>
+					<td>product_id</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;">○</td>
+					<td style="text-align:center;"></td>
+					<td>商品ID</td>
+				</tr>
+				<tr>
+					<td class="text-right">2</td>
+					<td>item_name</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品名</td>
+				</tr>
+				<tr>
+					<td class="text-right">3</td>
+					<td>catchcopy</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>キャッチコピー</td>
+				</tr>
+				<tr>
+					<td class="text-right">4</td>
+					<td>item_caption</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品説明</td>
+				</tr>
+				<tr>
+					<td class="text-right">5</td>
+					<td>genre_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ジャンルID</td>
+				</tr>
+				<tr>
+					<td class="text-right">6</td>
+					<td>item_price</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品価格(税込)(送料別)</td>
+				</tr>
+				<tr>
+					<td class="text-right">7</td>
+					<td>affiliate_rate</td>
+					<td>double</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>アフィリエイト率</td>
+				</tr>
+				<tr>
+					<td class="text-right">8</td>
+					<td>point_rate</td>
+					<td>double</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ポイント率</td>
+				</tr>
+				<tr>
+					<td class="text-right">9</td>
+					<td>point_rate_end_time</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ポイント率適用終了日時</td>
+				</tr>
+				<tr>
+					<td class="text-right">10</td>
+					<td>point_rate_start_time</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ポイント率適用開始日時</td>
+				</tr>
+				<tr>
+					<td class="text-right">11</td>
+					<td>shop_code</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ショップコード</td>
+				</tr>
+				<tr>
+					<td class="text-right">12</td>
+					<td>shop_name</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ショップ名</td>
+				</tr>
+				<tr>
+					<td class="text-right">13</td>
+					<td>review_average</td>
+					<td>double</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>レビュー平均</td>
+				</tr>
+				<tr>
+					<td class="text-right">14</td>
+					<td>review_count</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>レビュー件数</td>
+				</tr>
+				<tr>
+					<td class="text-right">15</td>
+					<td>item_url</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品URL</td>
+				</tr>
+				<tr>
+					<td class="text-right">16</td>
+					<td>item_price_base_field</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品価格基準フィールド</td>
+				</tr>
+				<tr>
+					<td class="text-right">17</td>
+					<td>item_price_max_1</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品価格最大(税込)(送料別) 1</td>
+				</tr>
+				<tr>
+					<td class="text-right">18</td>
+					<td>item_price_max_2</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品価格最大(税込)(送料別) 2</td>
+				</tr>
+				<tr>
+					<td class="text-right">19</td>
+					<td>item_price_max_3</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品価格最大(税込)(送料別) 3</td>
+				</tr>
+				<tr>
+					<td class="text-right">20</td>
+					<td>item_price_min_1</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品価格最小(税込)(送料別) 1</td>
+				</tr>
+				<tr>
+					<td class="text-right">21</td>
+					<td>item_price_min_2</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品価格最小(税込)(送料別) 2</td>
+				</tr>
+				<tr>
+					<td class="text-right">22</td>
+					<td>item_price_min_3</td>
+					<td>int</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品価格最小(税込)(送料別) 3</td>
+				</tr>
+				<tr>
+					<td class="text-right">23</td>
+					<td>gift_flag</td>
+					<td>tinyint(1)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ギフトフラグ</td>
+				</tr>
+				<tr>
+					<td class="text-right">24</td>
+					<td>image_flag</td>
+					<td>tinyint(1)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>画像フラグ</td>
+				</tr>
+				<tr>
+					<td class="text-right">25</td>
+					<td>postage_flag</td>
+					<td>tinyint(1)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>送料フラグ 0：送料込 1：送料別</td>
+				</tr>
+				<tr>
+					<td class="text-right">26</td>
+					<td>ship_overseas_area</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>海外発送フラグエリア</td>
+				</tr>
+				<tr>
+					<td class="text-right">27</td>
+					<td>ship_overseas_flag</td>
+					<td>tinyint(1)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>海外発送フラグ</td>
+				</tr>
+				<tr>
+					<td class="text-right">28</td>
+					<td>shop_of_the_year_flag</td>
+					<td>tinyint(1)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>年間ショップフラグ</td>
+				</tr>
+				<tr>
+					<td class="text-right">29</td>
+					<td>start_time</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>開始時間</td>
+				</tr>
+				<tr>
+					<td class="text-right">30</td>
+					<td>end_time</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>終了時間</td>
+				</tr>
+				<tr>
+					<td class="text-right">31</td>
+					<td>tag_ids</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>タグID 「|」区切りで複数あり</td>
+				</tr>
+				<tr>
+					<td class="text-right">32</td>
+					<td>credit_card_flag</td>
+					<td>tinyint(1)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>クレジットカードフラグ</td>
+				</tr>
+				<tr>
+					<td class="text-right">33</td>
+					<td>tax_flag</td>
+					<td>tinyint(1)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>消費税フラグ</td>
+				</tr>
+				<tr>
+					<td class="text-right">34</td>
+					<td>asuraku_area</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>あす楽エリア</td>
+				</tr>
+				<tr>
+					<td class="text-right">35</td>
+					<td>asuraku_closing_time</td>
+					<td>varchar(255)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>あす楽締め切り時間</td>
+				</tr>
+				<tr>
+					<td class="text-right">36</td>
+					<td>asuraku_flag</td>
+					<td>tinyint(1)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>あす楽フラグ</td>
+				</tr>
+				<tr>
+					<td class="text-right">37</td>
+					<td>availability</td>
+					<td>tinyint(1)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>利用可能フラグ</td>
+				</tr>
+				<tr>
+					<td class="text-right">38</td>
+					<td>affiliate_url</td>
+					<td>text</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>アフィリエイトURL</td>
+				</tr>
+				<tr>
+					<td class="text-right">39</td>
+					<td>medium_image_url_1</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品画像URL(中サイズ) 1</td>
+				</tr>
+				<tr>
+					<td class="text-right">40</td>
+					<td>medium_image_url_2</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品画像URL(中サイズ) 2</td>
+				</tr>
+				<tr>
+					<td class="text-right">41</td>
+					<td>medium_image_url_3</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品画像URL(中サイズ) 3</td>
+				</tr>
+				<tr>
+					<td class="text-right">42</td>
+					<td>small_image_url_1</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品画像URL(小サイズ) 1</td>
+				</tr>
+				<tr>
+					<td class="text-right">43</td>
+					<td>small_image_url_2</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品画像URL(小サイズ) 2</td>
+				</tr>
+				<tr>
+					<td class="text-right">44</td>
+					<td>small_image_url_3</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>商品画像URL(小サイズ) 3</td>
+				</tr>
+				<tr>
+					<td class="text-right">45</td>
+					<td>shop_url</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ショップURL</td>
+				</tr>
+				<tr>
+					<td class="text-right">46</td>
+					<td>shop_affiliate_url</td>
+					<td>text</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ショップアフィリエイトURL</td>
+				</tr>
+				<tr>
+					<td class="text-right">47</td>
+					<td>created_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">48</td>
+					<td>updated_at</td>
+					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="page">
+		<table class="table table-bordered htable" style="margin-bottom:1em;">
+			<colgroup>
+				<col style="width:30%;">
+				<col style="">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>テーブル名</th>
 					<td>t_reviews</td>
 				</tr>
 				<tr>
@@ -1161,6 +1685,190 @@
 					<td class="text-right">13</td>
 					<td>updated_at</td>
 					<td>timestamp</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="page">
+		<table class="table table-bordered htable" style="margin-bottom:1em;">
+			<colgroup>
+				<col style="width:30%;">
+				<col style="">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>テーブル名</th>
+					<td>v_rakuten_genres</td>
+				</tr>
+				<tr>
+					<th>備考</th>
+					<td>VIEW</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-condensed">
+			<colgroup>
+				<col style="width:3em;">
+				<col style="max-width:50%;">
+				<col style="max-width:50%;">
+				<col style="width:4em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="width:5em;">
+				<col style="">
+			</colgroup>
+			<thead>
+				<tr style="white-space:nowrap;">
+					<th class="text-right">#</th>
+					<th>物理名</th>
+					<th>型</th>
+					<th>NULL</th>
+					<th>初期値</th>
+					<th>主キー</th>
+					<th>ユニーク</th>
+					<th>備考</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-right">1</td>
+					<td>my_genre_id</td>
+					<td>int</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>楽天ジャンルID</td>
+				</tr>
+				<tr>
+					<td class="text-right">2</td>
+					<td>my_genre_name</td>
+					<td>varchar(128)</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>楽天ジャンル名</td>
+				</tr>
+				<tr>
+					<td class="text-right">3</td>
+					<td>my_genre_level</td>
+					<td>tinyint</td>
+					<td style="text-align:center;"></td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td>ジャンル階層、1:トップカテゴリ、以下、最大5層まで。</td>
+				</tr>
+				<tr>
+					<td class="text-right">4</td>
+					<td>children_cnt</td>
+					<td>bigint</td>
+					<td style="text-align:center;"></td>
+					<td>0</td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">5</td>
+					<td>genre_level1_genre_id</td>
+					<td>bigint</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">6</td>
+					<td>genre_level1_genre_name</td>
+					<td>varchar(128)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">7</td>
+					<td>genre_level2_genre_id</td>
+					<td>bigint</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">8</td>
+					<td>genre_level2_genre_name</td>
+					<td>varchar(128)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">9</td>
+					<td>genre_level3_genre_id</td>
+					<td>bigint</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">10</td>
+					<td>genre_level3_genre_name</td>
+					<td>varchar(128)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">11</td>
+					<td>genre_level4_genre_id</td>
+					<td>bigint</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">12</td>
+					<td>genre_level4_genre_name</td>
+					<td>varchar(128)</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">13</td>
+					<td>genre_level5_genre_id</td>
+					<td>bigint</td>
+					<td style="text-align:center;">○</td>
+					<td></td>
+					<td style="text-align:center;"></td>
+					<td style="text-align:center;"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td class="text-right">14</td>
+					<td>genre_level5_genre_name</td>
+					<td>varchar(128)</td>
 					<td style="text-align:center;">○</td>
 					<td></td>
 					<td style="text-align:center;"></td>
