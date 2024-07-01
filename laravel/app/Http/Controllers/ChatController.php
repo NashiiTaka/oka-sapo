@@ -186,18 +186,6 @@ class ChatController extends Controller
             ],
             'multiple' => false //複数選択可にする
         ],
-        'brand-select' => [
-            'message' => "好きなブランドはありますか？（複数選択可）", //ここの質問ローカルホストに保存？
-            'options' => [
-                ['display' => 'CANMAKE', 'goto' => '/chat/maker-select'],
-                ['display' => 'MAYBALLINE', 'goto' => '/chat/maker-select'],
-                ['display' => 'ちふれ', 'goto' => '/chat/maker-select'],
-                ['display' => 'ルナソル', 'goto' => '/chat/maker-select'],
-                ['display' => 'KATE', 'goto' => '/chat/maker-select'],
-                ['display' => 'RMK', 'goto' => '/chat/maker-select'],
-            ],
-            'multiple' => false
-        ],
         'maker-select' => [
             'message' => "好きなメーカーはありますか？（複数選択可）", //ここの質問ローカルホストに保存？
             'options' => [
@@ -207,7 +195,7 @@ class ChatController extends Controller
                 ['display' => 'Dior', 'goto' => '/chat/personal-color'],
                 ['display' => 'CHANEL', 'goto' => '/chat/personal-color'],
             ],
-            'multiple' => false
+            'multiple' => false //複数選択可にする
         ],
         'personal-color' => [
             'message' => "パーソナルカラー診断をしたことがありますか？", //ここの質問ローカルホストに保存？
@@ -326,6 +314,19 @@ class ChatController extends Controller
     }
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここ付け足したとこ（あー）
+    // フォーム表示のメソッドを追加
+    public function form()
+    {
+        $message = "入力フォームにメッセージを表示します";
+        $options = [
+            ['display' => 'オプション1', 'goto' => '/next1'],
+            ['display' => 'オプション2', 'goto' => '/next2'],
+        ];
+        $multiple = false;
+
+        return view('form', compact('message', 'options', 'multiple'));
+    }
+
 public function multiple(Request $request)
 {
     $selectedOptions = $request->input('options', []);
