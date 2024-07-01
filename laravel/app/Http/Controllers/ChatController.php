@@ -33,22 +33,11 @@ class ChatController extends Controller
             ],
             'multiple' => false
         ],
-        'price-select' => [
-            'message' => "１本あたりの予算はどれくらいでしょうか？",
-            'options' => [
-                ['display' => '1,000円以下', 'goto' => '/chat/scene-select'],
-                ['display' => '1,000円〜2,000円', 'goto' => '/chat/scene-select'],
-                ['display' => '2,000円〜3,000円', 'goto' => '/chat/scene-select'],
-                ['display' => '3,000円以上', 'goto' => '/chat/scene-select'],
-            ],
-            'multiple' => false
-        ],
-        // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
         'ask-purpose' => [
             'message' => "今回の購入目的を教えていただけますか？",
             'options' => [
                 ['display' => '良さげなものだったら新しいアイテムが欲しい。', 'goto' => '/chat/best-one-lead'],
-                ['display' => '今使用しているものがなくなりそう。', 'goto' => '/chat/repeat'], 
+                ['display' => '今使用しているものがなくなりそう。', 'goto' => '/chat/repeat'],
                 ['display' => '今使用しているものに不満、またはお悩みやトラブルがある。', 'goto' => '/chat/now-use'],
                 ['display' => '印象を変えたい。', 'goto' => '/chat/impression'],
             ],
@@ -82,19 +71,29 @@ class ChatController extends Controller
                 ['display' => '乾燥する', 'goto' => '/osusume'], //ここまだ
                 ['display' => '唇の色ムラ', 'goto' => '/osusume'], //ここまだ
                 ['display' => '縦じわ', 'goto' => '/osusume'], //ここまだ
-                ['display' => '合わない成分がある', 'goto' => '/chat/seibun'], 
+                ['display' => '合わない成分がある', 'goto' => '/chat/seibun'],
             ],
             'multiple' => false
         ],
-        'nayami' => [
-            'message' => "具体的にはどんな不満やお悩みがありますか？",//今ここ
+        'seibun' => [
+            'message' => "合わない成分を選択して下さい（複数選択可）？",
             'options' => [
                 ['display' => 'ミツロウ、パラペン、など', 'goto' => '/chat/'], //ここのページ打ち込み型にする？
 
             ],
             'multiple' => false
         ],
-        // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+        // ここから大枠のヒアリング　ーーーーーーーーーーーーーーーーーーーーーーーーー
+        'price-select' => [
+            'message' => "１本あたりの予算はどれくらいでしょうか？",
+            'options' => [
+                ['display' => '1,000円以下', 'goto' => '/chat/scene-select'],
+                ['display' => '1,000円〜2,000円', 'goto' => '/chat/scene-select'],
+                ['display' => '2,000円〜3,000円', 'goto' => '/chat/scene-select'],
+                ['display' => '3,000円以上', 'goto' => '/chat/scene-select'],
+            ],
+            'multiple' => false
+        ],
         'scene-select' => [
             'message' => "今回お探しのアイテムは、普段使いですか？それとも特別な日のためにお探しですか？",
             'options' => [
@@ -106,20 +105,165 @@ class ChatController extends Controller
         'impression' => [
             'message' => "どんな印象に見られたいですか？",
             'options' => [
-                ['display' => 'ゴージャス、華やか', 'goto' => '/chat/gorgeous'],
-                ['display' => '女性らしい、スイート', 'goto' => '/chat/sweet'],
-                ['display' => 'クール、知的', 'goto' => '/chat/cool'],
-                ['display' => 'ヘルシー、はつらつ', 'goto' => '/chat/healthy'],
+                ['display' => 'ゴージャス、華やか', 'goto' => '/chat/red'],
+                ['display' => '女性らしい、スイート', 'goto' => '/chat/pink'],
+                ['display' => 'クール、知的', 'goto' => '/chat/beige'],
+                ['display' => 'ヘルシー、はつらつ', 'goto' => '/chat/orange'],
             ],
             'multiple' => false
         ],
         'scene' => [
             'message' => "どんなシーンで使う予定ですか？",
             'options' => [
-                ['display' => '普段使い', 'goto' => '/chat/impression'],
-                ['display' => '特別な日', 'goto' => '/chat/how-scene'],
-                ['display' => '特別な日', 'goto' => '/chat/how-scene'],
-                ['display' => '特別な日', 'goto' => '/chat/how-scene'],
+                ['display' => '結婚式・パーティー', 'goto' => '/chat/red'],
+                ['display' => 'デート・婚活', 'goto' => '/chat/pink'],
+                ['display' => '就職活動', 'goto' => '/chat/beige'],
+                ['display' => 'アクティブな日', 'goto' => '/chat/orange'],
+            ],
+            'multiple' => false
+        ],
+        // ーーーーーーーーーーーー　ここから色　ーーーーーーーーーーーー
+        'red' => [
+            'message' => "華やかなレッド系がおすすめです。",
+            'options' => [
+                ['display' => '次へ', 'goto' => '/chat/shitukan'], //ここまだ
+            ],
+            'multiple' => false
+        ],
+        'pink' => [
+            'message' => "キュートで可愛らしいピンク系がおすすめです。",
+            'options' => [
+                ['display' => '次へ', 'goto' => '/chat/shitukan'], //ここまだ
+            ],
+            'multiple' => false
+        ],
+        'beige' => [
+            'message' => "知的でナチュラルなベージュ系がおすすめです。",
+            'options' => [
+                ['display' => '次へ', 'goto' => '/chat/shitukan'], //ここまだ
+            ],
+            'multiple' => false
+        ],
+        'orange' => [
+            'message' => "アクティブではつらつとしたオレンジ系がおすすめです。",
+            'options' => [
+                ['display' => '次へ', 'goto' => '/chat/shitukan'], //ここまだ
+            ],
+            'multiple' => false
+        ],
+        // ーーーーーーーーーーーー　ここから詳細ヒアリング　ーーーーーーーーーーーー
+        'shitukan' => [
+            'message' => "どんな質感がお好みですか？", //ここの質問ローカルホストに保存？
+            'options' => [
+                ['display' => 'ツヤ', 'goto' => '/chat/color-select'],
+                ['display' => 'マット', 'goto' => '/chat/color-select'],
+                ['display' => 'シアー', 'goto' => '/chat/color-select'],
+                ['display' => 'メタリック', 'goto' => '/chat/color-select'],
+            ],
+            'multiple' => false
+        ],
+        'color-select' => [
+            'message' => "どんな色がお好みですか？（1つ選ぶ）", //ここの質問ローカルホストに保存？
+            'options' => [
+                ['display' => 'レッド系', 'goto' => '/chat/brand-select'],
+                ['display' => 'ピンク系', 'goto' => '/chat/brand-select'],
+                ['display' => 'ブラウン系', 'goto' => '/chat/brand-select'],
+                ['display' => 'ローズ・ワイン系', 'goto' => '/chat/brand-select'],
+                ['display' => 'ベージュ系', 'goto' => '/chat/brand-select'],
+                ['display' => 'オレンジ系', 'goto' => '/chat/brand-select'],
+            ],
+            'multiple' => false //複数選択可にする
+        ],
+        'brand-select' => [
+            'message' => "好きなブランドはありますか？（複数選択可）", //ここの質問ローカルホストに保存？
+            'options' => [
+                ['display' => 'CANMAKE', 'goto' => '/chat/maker-select'],
+                ['display' => 'MAYBALLINE', 'goto' => '/chat/maker-select'],
+                ['display' => 'ちふれ', 'goto' => '/chat/maker-select'],
+                ['display' => 'ルナソル', 'goto' => '/chat/maker-select'],
+                ['display' => 'KATE', 'goto' => '/chat/maker-select'],
+                ['display' => 'RMK', 'goto' => '/chat/maker-select'],
+            ],
+            'multiple' => false //複数選択可にする
+        ],
+        'brand-select' => [
+            'message' => "好きなブランドはありますか？（複数選択可）", //ここの質問ローカルホストに保存？
+            'options' => [
+                ['display' => 'CANMAKE', 'goto' => '/chat/maker-select'],
+                ['display' => 'MAYBALLINE', 'goto' => '/chat/maker-select'],
+                ['display' => 'ちふれ', 'goto' => '/chat/maker-select'],
+                ['display' => 'ルナソル', 'goto' => '/chat/maker-select'],
+                ['display' => 'KATE', 'goto' => '/chat/maker-select'],
+                ['display' => 'RMK', 'goto' => '/chat/maker-select'],
+            ],
+            'multiple' => false
+        ],
+        'maker-select' => [
+            'message' => "好きなメーカーはありますか？（複数選択可）", //ここの質問ローカルホストに保存？
+            'options' => [
+                ['display' => '資生堂', 'goto' => '/chat/personal-color'],
+                ['display' => 'Kanebo.', 'goto' => '/chat/personal-color'],
+                ['display' => 'KOSE.', 'goto' => '/chat/personal-color'],
+                ['display' => 'Dior', 'goto' => '/chat/personal-color'],
+                ['display' => 'CHANEL', 'goto' => '/chat/personal-color'],
+            ],
+            'multiple' => false
+        ],
+        'personal-color' => [
+            'message' => "パーソナルカラー診断をしたことがありますか？", //ここの質問ローカルホストに保存？
+            'options' => [
+                ['display' => 'ある', 'goto' => '/chat/user-personal-color'],
+                ['display' => 'したことないので診断する', 'goto' => '/chat/color-check'], //ここまだ（パーソナルカラー診断）
+                ['display' => '今回は診断せずに進めたい', 'goto' => '/osusume'],
+            ],
+            'multiple' => false
+        ],
+        'user-personal-color' => [
+            'message' => "あなたのパーソナルカラーを選択して下さい？", //ここの質問ローカルホストに保存？
+            'options' => [
+                ['display' => 'イエベ春', 'goto' => '/osusume'], //ここまだ
+                ['display' => 'ブルベ夏', 'goto' => '/osusume'],
+                ['display' => 'イエベ秋', 'goto' => '/osusume'],
+                ['display' => 'ブルベ冬', 'goto' => '/osusume'], //おすすめ３本からチャットGPTのページに飛ばす方法　まだ
+            ],
+            'multiple' => false
+        ],
+
+        // ここからリコメンド　ーーーーーーーーーーーーーーーーーーーーーーーー ChatGPTのページに飛ばす？？
+
+        // ーーーーーーーーーーーーーーーーーーーーーーーーここまで？
+
+        // ここからクロージングーーーーーーーーーーーーーーーーーーーーーーーー
+        'closing' => [
+            'message' => "◯◯という理由で、こちらの３本がお似合いだと思います！
+                            お客様はこちらの商品をについてどう思われますか？",
+            'options' => [
+                ['display' => 'とても気に入った', 'goto' => '/buy'],
+                ['display' => '気に入った', 'goto' => '/buy'],
+                ['display' => 'あまり好みではない', 'goto' => '/again'],
+                ['display' => '全く好みではない', 'goto' => '/again'],
+            ],
+            'multiple' => false
+        ],
+        'buy' => [
+            'message' => "これで決定しますか？",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/thank-you'],
+            ],
+            'multiple' => false
+        ],
+        'thank-you' => [
+            'message' => "ありがとうございます！お客様のサポートができて心より嬉しく思います。新しいリップを着けて、気分を上げてくださいね！",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/thank-you'], //ここまだ
+            ],
+            'multiple' => false
+        ],
+        'again' => [
+            'message' => "もう一度選び直しますか？",
+            'options' => [
+                ['display' => '再トライ', 'goto' => '/thank-you'], //どこに戻る？
+                ['display' => '今回はやめておく', 'goto' => '/'], //どこに飛ばす？
             ],
             'multiple' => false
         ],
@@ -136,7 +280,7 @@ class ChatController extends Controller
     {
         // return $this->chat('index');
         $recommendations = TProduct::getRecommendations([]);
-        
+
         // $hairetsu = [];
         // $hairetsu = array();
 
@@ -146,7 +290,7 @@ class ChatController extends Controller
         // print($hairetsu[1]);
 
         // $mojiHairetsu = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-        
+
         // // 連想配列
         $rensouHairetsu = [
             'name' => '山田太郎',
@@ -179,8 +323,20 @@ class ChatController extends Controller
             'options' => $options,
             'multiple' => $multiple
         ]);
-
     }
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここ付け足したとこ（あー）
+public function multiple(Request $request)
+{
+    $selectedOptions = $request->input('options', []);
+    
+    // 選択されたオプションを処理するロジックをここに追加
+    // 例えば、ログを表示したり、データベースに保存したりする
+
+    return view('result', compact('selectedOptions'));
+}
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここまで
+
 
     public function passer(Request $request)
     {

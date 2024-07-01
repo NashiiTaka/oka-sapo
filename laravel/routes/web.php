@@ -13,6 +13,8 @@ Route::get('/', [ChatController::class, 'index']);
 Route::get('/chat/{message}', [ChatController::class, 'chat']);
 Route::post('/passer', [ChatController::class, 'passer']);
 Route::get('/osusume', [ChatController::class, 'osusume']);
+Route::get('/form', [ChatController::class, 'form']); //打ち込み型のルート設定
+Route::post('/multiple', [ChatController::class, 'multiple']); //複数選択のルート
 
 // ルーティングのグループ化
 // グループ化する接頭辞
