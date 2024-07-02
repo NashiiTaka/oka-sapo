@@ -5,7 +5,7 @@
     <img src="/img/josei.png" alt="Home Icon" class="h-32 w-32">
   </div>
 
-  <h1 class="text-lg mt-4 mb-8" id="animated-message "></h1>
+  <h1 class="text-lg mt-4 mb-8 mx-4" id="animated-message"></h1>
   
   @foreach ($options as $o)
     <a href="{{ $o['goto'] . "?message={$currentMessage}&answer=" . urlencode($o['display']) }}"
@@ -32,6 +32,3 @@
     });
   </script>
 </x-layouts.public>
-
-
-

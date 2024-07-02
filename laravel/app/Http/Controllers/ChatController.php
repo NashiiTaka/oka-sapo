@@ -36,7 +36,14 @@ class ChatController extends Controller
             'multiple' => false
         ],
         'best-one-lead' => [
-            'message' => "当店では、約◯種類のリップアイテムを取り扱っております。これからあなたにピッタリ似合うリップを探すお手伝いをさせてください！それでは、あなたにふさわしい運命の１本を見つけるために、いくつか質問をしていきます。深く考えず、直感で答えてくださいね。",
+            'message' => "当店では、約◯種類のリップアイテムを取り扱っております。これからあなたにピッタリ似合うリップを探すお手伝いをさせてください！",
+            'options' => [
+                ['display' => '次へ', 'goto' => '/chat/best-one-lead2'],
+            ],
+            'multiple' => false
+        ],
+        'best-one-lead2' => [
+            'message' => "それでは、あなたにふさわしい運命の１本を見つけるために、いくつか質問をしていきます。深く考えず、直感で答えてくださいね。",
             'options' => [
                 ['display' => '次へ', 'goto' => '/chat/price-select'],
             ],
@@ -55,7 +62,7 @@ class ChatController extends Controller
         'repeat' => [
             'message' => "リピート購入しますか？",
             'options' => [
-                ['display' => 'はい。', 'goto' => '/chat/repeat-buy'], //ここまだ
+                ['display' => 'はい。', 'goto' => '/chat/repeat-buy'], 
             ],
             'multiple' => false
         ],
@@ -135,28 +142,28 @@ class ChatController extends Controller
         'red' => [
             'message' => "華やかなレッド系がおすすめです。",
             'options' => [
-                ['display' => '次へ', 'goto' => '/chat/shitukan'], //ここまだ
+                ['display' => '次へ', 'goto' => '/chat/shitukan'], 
             ],
             'multiple' => false
         ],
         'pink' => [
             'message' => "キュートで可愛らしいピンク系がおすすめです。",
             'options' => [
-                ['display' => '次へ', 'goto' => '/chat/shitukan'], //ここまだ
+                ['display' => '次へ', 'goto' => '/chat/shitukan'], 
             ],
             'multiple' => false
         ],
         'beige' => [
             'message' => "知的でナチュラルなベージュ系がおすすめです。",
             'options' => [
-                ['display' => '次へ', 'goto' => '/chat/shitukan'], //ここまだ
+                ['display' => '次へ', 'goto' => '/chat/shitukan'], 
             ],
             'multiple' => false
         ],
         'orange' => [
             'message' => "アクティブではつらつとしたオレンジ系がおすすめです。",
             'options' => [
-                ['display' => '次へ', 'goto' => '/chat/shitukan'], //ここまだ
+                ['display' => '次へ', 'goto' => '/chat/shitukan'], 
             ],
             'multiple' => false
         ],
@@ -264,7 +271,122 @@ class ChatController extends Controller
             ],
             'multiple' => false
         ],
+
+        // ここからパーソナルカラー診断ーーーーーーーーーーーーーーーーーー
+        'color-check' => [
+            'message' => "肌はどちらかというと明るめですか？",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/chat/color-check-1'], 
+                ['display' => 'いいえ', 'goto' => '/chat/color-check-2'], 
+            ],
+            'multiple' => false
+        ],
+        'color-check-1' => [
+            'message' => "地毛の色が暗めの茶色、もしくは黒に近いですか？",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/chat/color-check-1-1'], 
+                ['display' => 'いいえ', 'goto' => '/chat/color-check-1-2'], 
+            ],
+            'multiple' => false
+        ],
+        'color-check-1-1' => [
+            'message' => "肌色が良くないと言われることが多いですか？",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/chat/color-check-1-1-1'], 
+                ['display' => 'いいえ', 'goto' => '/chat/color-check-1-2'], 
+            ],
+            'multiple' => false
+        ],
+        'color-check-1-1-1' => [
+            'message' => "洋服などは、はっきりとしたコントラストのある色がなじみますか？",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/chat/burube-fuyu'], 
+                ['display' => 'いいえ', 'goto' => '/chat/iebe-aki'], 
+            ],
+            'multiple' => false
+        ],
+        // ーーーーーーーーーーーーーー
+        'color-check-1-2' => [
+            'message' => "日焼けしやすいですか？",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/chat/color-check-1-2-1'], 
+                ['display' => 'いいえ', 'goto' => '/chat/color-check-1-2-2'], 
+            ],
+            'multiple' => false
+        ],
+        'color-check-1-2-1' => [
+            'message' => "洋服などはブラウン、ゴールド、やスモーキーカラーがなじみますか？",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/chat/iebe-aki'], 
+                ['display' => 'いいえ', 'goto' => '/chat/burube-fuyu'], 
+            ],
+            'multiple' => false
+        ],
+        'color-check-1-2-2' => [
+            'message' => "洋服などは黒、ネイビー、グレーなどの無彩色がしっくりきますか？",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/chat/burube-natu'], 
+                ['display' => 'いいえ', 'goto' => '/chat/iebe-haru'], 
+            ],
+            'multiple' => false
+        ],
+
+        // ーーーーーーーーーーーーーーー
+        'color-check-2' => [
+            'message' => "地毛の色が暗めの茶色、もしくは黒に近いですか？",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/chat/color-check-1-2'], 
+                ['display' => 'いいえ', 'goto' => '/chat/color-check-2-2'], 
+            ],
+            'multiple' => false
+        ],
+        'color-check-2-2' => [
+            'message' => "頬に赤みが出やすいですか？",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/chat/color-check-1-2-2'], 
+                ['display' => 'いいえ', 'goto' => '/chat/color-check-2-2-2'], 
+            ],
+            'multiple' => false
+        ],
+        'color-check-2-2-2' => [
+            'message' => "洋服などは黒、ネイビー、グレーなどの無彩色がしっくりきますか？",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/chat/burube-natu'], 
+                ['display' => 'いいえ', 'goto' => '/chat/iebe-haru'], 
+            ],
+            'multiple' => false
+        ],
+        'iebe-aki' => [
+            'message' => "あなたのパーソナルカラーはイエベ秋です。",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/osusume'],  //ここまだ
+            ],
+            'multiple' => false
+        ],
+        'burube-fuyu' => [
+            'message' => "あなたのパーソナルカラーはブルベ冬です。",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/osusume'],  //ここまだ
+            ],
+            'multiple' => false
+        ],
+        'burube-natu' => [
+            'message' => "あなたのパーソナルカラーはブルベ夏です。",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/osusume'],   //ここまだ
+            ],
+            'multiple' => false
+        ],
+        'iebe-haru' => [
+            'message' => "あなたのパーソナルカラーはイエベ春です。",
+            'options' => [
+                ['display' => 'はい', 'goto' => '/osusume'],   //ここまだ
+            ],
+            'multiple' => false
+        ],
+        // ここまでパーソナルカラー診断ーーーーーーーーーーーーーーーーー
     ];
+
 
     public function index(Request $request)
     {
