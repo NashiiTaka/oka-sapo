@@ -27,7 +27,7 @@ class ChatController extends Controller
      */
     private static $messages = [
         'index' => [
-            'message' => "こんにちは。コスメピシャットへようこそ！\n本日はどのような目的でご来店いただいたのですか？",
+            'message' => "こんにちは。コスメピシャットへようこそ！本日はどのような目的でご来店いただいたのですか？",
             'options' => [
                 ['display' => '新しいアイテムが欲しい。', 'goto' => '/chat/ask-purpose'],
                 ['display' => '良さげなものがあれば買いたい。', 'goto' => '/chat/best-one-lead'],
@@ -36,8 +36,7 @@ class ChatController extends Controller
             'multiple' => false
         ],
         'best-one-lead' => [
-            'message' => "当店では、約◯種類のリップアイテムを取り扱っております。これからあなたにピッタリ似合うリップを探すお手伝いをさせてください！
-                それでは、あなたにふさわしい運命の１本を見つけるために、いくつか質問をしていきます。深く考えず、直感で答えてくださいね。",
+            'message' => "当店では、約◯種類のリップアイテムを取り扱っております。これからあなたにピッタリ似合うリップを探すお手伝いをさせてください！それでは、あなたにふさわしい運命の１本を見つけるために、いくつか質問をしていきます。深く考えず、直感で答えてくださいね。",
             'options' => [
                 ['display' => '次へ', 'goto' => '/chat/price-select'],
             ],
