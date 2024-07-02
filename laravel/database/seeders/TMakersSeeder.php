@@ -16,6 +16,8 @@ class TMakersSeeder extends CsvSeeder
         $this->table = 't_makers';
         $this->filename = base_path() . '/util/outcsv/t_makers.csv';
         $this->timestamps = true;
+        $this->created_at = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
+        $this->updated_at = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
     }
 
     /**

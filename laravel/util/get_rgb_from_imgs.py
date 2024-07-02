@@ -150,10 +150,13 @@ def main():
         for i, (color, proportion) in enumerate(zip(dominant_colors, proportions)):
             # print(f"Color {i+1}: RGB = {color}, Proportion = {proportion:.2%}")
             ttl = [ttl[0] + color[0] * proportion, ttl[1] + color[1] * proportion, ttl[2] + color[2] * proportion]
-            
             buff_append += "," + rgb_to_hex(color) + "," + str(proportion)
         ttlColor =rgb_to_hex(ttl)
         csvColorInfo += buff + "," + ttlColor + buff_append + "\n"
+        
+        if valiation_dict.get(valiation["file_name_without_ext"]) is None:
+            print(f"valiation_dictに{valiation['file_name_without_ext']}が存在しません。")
+            continue
         
         valiation_name = valiation_dict[valiation["file_name_without_ext"]]
         

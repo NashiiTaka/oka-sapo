@@ -76,8 +76,7 @@ class TValiation extends Model
      * @param OsusumeParams $params 検索パラメータ
      * @return array<TProduct> 推薦商品の配列を返却する。
      */
-    static function 
-    getRecommendations(OsusumeParams $params)
+    static function getRecommendations(OsusumeParams $params)
     {
         $colorOrderCondition = ['sql' => [], 'params' => []];
 

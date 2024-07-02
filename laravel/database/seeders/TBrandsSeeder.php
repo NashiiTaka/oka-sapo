@@ -16,6 +16,8 @@ class TBrandsSeeder extends CsvSeeder
         $this->table = 't_brands';
         $this->filename = base_path() . '/util/outcsv/t_brands.csv';
         $this->timestamps = true;
+        $this->created_at = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
+        $this->updated_at = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
     }
 
     /**

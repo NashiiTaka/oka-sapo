@@ -16,6 +16,8 @@ class MCategoriesSeeder extends CsvSeeder
         $this->table = 'm_categories';
         $this->filename = base_path() . '/util/outcsv/m_categories.csv';
         $this->timestamps = true;
+        $this->created_at = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
+        $this->updated_at = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
     }
 
     /**

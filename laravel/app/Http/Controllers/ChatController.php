@@ -357,9 +357,9 @@ class ChatController extends Controller
         $multiple = $thisMessage['multiple'];
 
         // デバッグ環境では、セッションに格納した情報を表示させる。
-        if (env('APP_ENV') === 'local') {
-            var_dump($request->session()->get(self::SESSION_KEY_ANSWERS));
-        }
+        // if (env('APP_ENV') === 'local') {
+        //     var_dump($request->session()->get(self::SESSION_KEY_ANSWERS));
+        // }
 
         return view('singleanswer', compact('message', 'options', 'multiple', 'currentMessage'));
     }

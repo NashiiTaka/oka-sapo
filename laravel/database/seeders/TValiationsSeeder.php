@@ -16,6 +16,8 @@ class TValiationsSeeder extends CsvSeeder
         $this->table = 't_valiations';
         $this->filename = base_path() . '/util/outcsv/t_valiations.csv';
         $this->timestamps = true;
+        $this->created_at = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
+        $this->updated_at = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
     }
 
     /**
