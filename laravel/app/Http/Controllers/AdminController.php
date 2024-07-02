@@ -25,7 +25,7 @@ class AdminController extends Controller
      * @return void
      */
     public function checkColors(){
-        $valiations = TValiation::with('product')->where('is_active', '=', true)->limit(200)->get();
+        $valiations = TValiation::with('product')->where('is_active', '=', true)->limit(1000)->get();
         // return $valiations;
         return view('admin.check-colors', compact('valiations'));
     }

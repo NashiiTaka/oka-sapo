@@ -7,14 +7,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Models\TChat;
 use App\Models\TProduct;
+use App\Models\TValiation;
+use App\Services\OsusumeParams;
 use Exception;
 
+use App\Services\RgbColor;
 
 class ChatController extends Controller
 {
-    // Route::get('/best-one-lead', [ChatController::class, 'bestOne']);
-    // Route::get('/ask-purpose', [ChatController::class, 'askPurpose']);
+    /**
+     * 回答を保持するセッションキー
+     */
+    const SESSION_KEY_ANSWERS = 'answers';
 
+    /**
+     * 会話分岐のメッセージ
+     *
+     * @var array
+     */
     private static $messages = [
         'index' => [
             'message' => "こんにちは。コスメピシャットへようこそ！\n本日はどのような目的でご来店いただいたのですか？",
@@ -87,9 +97,9 @@ class ChatController extends Controller
         'price-select' => [
             'message' => "１本あたりの予算はどれくらいでしょうか？",
             'options' => [
-                ['display' => '1,000円以下', 'goto' => '/chat/scene-select'],
-                ['display' => '1,000円〜2,000円', 'goto' => '/chat/scene-select'],
-                ['display' => '2,000円〜3,000円', 'goto' => '/chat/scene-select'],
+                ['display' => '1,000円未満', 'goto' => '/chat/scene-select'],
+                ['display' => '1,000円〜2,000円未満', 'goto' => '/chat/scene-select'],
+                ['display' => '2,000円〜3,000円未満', 'goto' => '/chat/scene-select'],
                 ['display' => '3,000円以上', 'goto' => '/chat/scene-select'],
             ],
             'multiple' => false
@@ -105,20 +115,20 @@ class ChatController extends Controller
         'impression' => [
             'message' => "どんな印象に見られたいですか？",
             'options' => [
-                ['display' => 'ゴージャス、華やか', 'goto' => '/chat/red'],
-                ['display' => '女性らしい、スイート', 'goto' => '/chat/pink'],
-                ['display' => 'クール、知的', 'goto' => '/chat/beige'],
-                ['display' => 'ヘルシー、はつらつ', 'goto' => '/chat/orange'],
+                ['display' => 'ゴージャス、華やか', 'goto' => '/osusume/impression'],
+                ['display' => '女性らしい、スイート', 'goto' => '/osusume/impression'],
+                ['display' => 'クール、知的', 'goto' => '/osusume/impression'],
+                ['display' => 'ヘルシー、はつらつ', 'goto' => '/osusume/impression'],
             ],
             'multiple' => false
         ],
         'scene' => [
             'message' => "どんなシーンで使う予定ですか？",
             'options' => [
-                ['display' => '結婚式・パーティー', 'goto' => '/chat/red'],
-                ['display' => 'デート・婚活', 'goto' => '/chat/pink'],
-                ['display' => '就職活動', 'goto' => '/chat/beige'],
-                ['display' => 'アクティブな日', 'goto' => '/chat/orange'],
+                ['display' => '結婚式・パーティー', 'goto' => '/osusume/scene'],
+                ['display' => 'デート・婚活', 'goto' => '/osusume/scene'],
+                ['display' => '就職活動', 'goto' => '/osusume/scene'],
+                ['display' => 'アクティブな日', 'goto' => '/osusume/scene'],
             ],
             'multiple' => false
         ],
@@ -269,37 +279,78 @@ class ChatController extends Controller
         ],
     ];
 
-
-    // Route::get('/', [ChatController::class, 'index']);
-    public function index()
+    public function index(Request $request)
     {
-        return $this->chat('index');
+        // トップ画面に来たら、セッション内の回答を削除
+        $request->session()->forget(self::SESSION_KEY_ANSWERS);
+
+        return $this->chat($request, 'index');
     }
 
-    public function osusume()
+    /**
+     * おすすめ商品の表示
+     *
+     * @param Request $request リクエスト
+     * @param 'impression'|'scene' $from 遷移元
+     * @return void
+     */
+    public function osusume(Request $request, $from)
     {
-        // return $this->chat('index');
-        $recommendations = TProduct::getRecommendations([]);
+        $params = new OsusumeParams();
 
-        // $hairetsu = [];
-        // $hairetsu = array();
+        // ここで、$fromによって、おすすめの商品を取得する処理を書く
+        switch ($from) {
+            case 'impression':
+                // 印象によっておすすめの商品を取得
+                switch ($request->answer) {
+                    case 'ゴージャス、華やか':
+                        // レッド系、ローズワイン系
+                        $params->colors = [new RgbColor('#D7514D'), new RgbColor('#B0737B')];
+                        break;
+                    case '女性らしい、スイート':
+                        // ピンク系
+                        $params->colors = [new RgbColor('#DD609A')];
+                        break;
+                    case 'クール、知的':
+                        // ベージュ系、ブラウン系
+                        $params->colors = [new RgbColor('#CF9D5E'), new RgbColor('#A06757')];
+                        break;
+                    case 'ヘルシー、はつらつ':
+                        // オレンジ系
+                        $params->colors = [new RgbColor('#EBAB54')];
+                        break;
+                    default:
+                        throw new Exception('不正な選択です。');
+                }
+                break;
+            case 'scene':
+                switch ($request->answer) {
+                    case '結婚式・パーティー':
+                        // レッド系、ローズワイン系
+                        $params->colors = [new RgbColor('#D7514D'), new RgbColor('#B0737B')];
+                        break;
+                    case 'デート・婚活':
+                        // ピンク系
+                        $params->colors = [new RgbColor('#DD609A')];
+                        break;
+                    case '就職活動':
+                        // ベージュ系、ブラウン系
+                        $params->colors = [new RgbColor('#CF9D5E'), new RgbColor('#A06757')];
+                        break;
+                    case 'アクティブな日':
+                        // オレンジ系
+                        $params->colors = [new RgbColor('#EBAB54')];
+                        break;
+                    default:
+                        throw new Exception('不正な選択です。');
+                }
+                // シーンによっておすすめの商品を取得
+                break;
+        }
 
-        // // 普通の配列
-        // $hairetsu = [1, 5, 7, 4, 3, 2, 6, 8, 9, 10];
-        // $hairetsu[0] = 1;
-        // print($hairetsu[1]);
+        $recommendations = TProduct::getRecommendations($params);
 
-        // $mojiHairetsu = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-
-        // // 連想配列
-        $rensouHairetsu = [
-            'name' => '山田太郎',
-            'age' => 20,
-            'recommendations' => $recommendations
-        ];
-        // $rensouHairetsu['name'] = '山田花子';
-
-        return view('osusume', $rensouHairetsu);
+        return view('osusume', compact('recommendations'));
     }
 
 
@@ -309,33 +360,33 @@ class ChatController extends Controller
     // localhost/chat/ask-purpose   => $message 'ask-purpose'
     // localhost/chat/best-one-lead => $message 'best-one-lead'
     // 様になって、このメソッドが呼び出される。
-    public function chat(string $message)
+    public function chat(Request $request, string $message)
     {
         $thisMessage = self::$messages[$message];
+        $currentMessage = $message;
         $message = $thisMessage['message'];
         $options = $thisMessage['options'];
         $multiple = $thisMessage['multiple'];
 
-        return view('singleanswer', compact('message', 'options', 'multiple'));
+        // デバッグ環境では、セッションに格納した情報を表示させる。
+        if (env('APP_ENV') === 'local') {
+            var_dump($request->session()->get(self::SESSION_KEY_ANSWERS));
+        }
 
-        return view('singleanswer', [
-            'message' => $message,
-            'options' => $options,
-            'multiple' => $multiple
-        ]);
+        return view('singleanswer', compact('message', 'options', 'multiple', 'currentMessage'));
     }
 
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここ付け足したとこ（あー）
-public function multiple(Request $request)
-{
-    $selectedOptions = $request->input('options', []);
-    
-    // 選択されたオプションを処理するロジックをここに追加
-    // 例えば、ログを表示したり、データベースに保存したりする
+    // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここ付け足したとこ（あー）
+    public function multiple(Request $request)
+    {
+        $selectedOptions = $request->input('options', []);
 
-    return view('result', compact('selectedOptions'));
-}
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここまで
+        // 選択されたオプションを処理するロジックをここに追加
+        // 例えば、ログを表示したり、データベースに保存したりする
+
+        return view('result', compact('selectedOptions'));
+    }
+    // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここまで
 
 
     public function passer(Request $request)

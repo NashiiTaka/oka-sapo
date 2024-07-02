@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Services\OsusumeParams;
 
 /**
  * 
@@ -48,6 +49,17 @@ class TValiation extends Model
     use HasFactory;
 
     /**
+     * 
+     * 商品情報を取得
+     *
+     * @return BelongsTo
+     */
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(TProduct::class, 'product_id', 'product_id');
+    }
+
+    /**
      * 画像パスを取得する
      *
      * @return string 画像パス
@@ -57,14 +69,37 @@ class TValiation extends Model
         return '/img/valiations/' . $this->product_id . '/' . $this->valiation_id . '.' . $this->extension;
     }
 
+    const COLOR_DIFF = 20;
     /**
-     * 
-     * 商品情報を取得
+     * 推薦商品の配列を返却する。
      *
-     * @return BelongsTo
+     * @param OsusumeParams $params 検索パラメータ
+     * @return array<TProduct> 推薦商品の配列を返却する。
      */
-    public function product(): BelongsTo
+    static function 
+    getRecommendations(OsusumeParams $params)
     {
-        return $this->belongsTo(TProduct::class, 'product_id', 'product_id');
+        $colorOrderCondition = ['sql' => [], 'params' => []];
+
+        foreach($params->colors as $index => $color) {
+            $colorOrderCondition['sql'][] = 'sqrt(pow(r - ?, 2) + pow(g - ?, 2) + pow(g - ?, 2))';
+            $colorOrderCondition['params'][] = $color->getRed();
+            $colorOrderCondition['params'][] = $color->getGreen();
+            $colorOrderCondition['params'][] = $color->getBlue();
+        }
+
+        return
+            self::where('is_active', 1)
+            ->orderByRaw(
+                count($params->colors) > 1 ?
+                    'LEAST(' . implode(', ', $colorOrderCondition['sql']) . ') asc' :
+                    $colorOrderCondition['sql'][0] . ' asc'
+                , $colorOrderCondition['params']
+            )
+            ->with('product')
+            ->with('product.maker')
+            ->with('product.brand')
+            ->limit(300)
+            ->get();
     }
 }
