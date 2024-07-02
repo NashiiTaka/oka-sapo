@@ -232,5 +232,36 @@ order by
     ) asc;
 
 SELECT
-    LEAST(1, 5, 2, 3, 4)
+    LEAST(1, 5, 2, 3, 4);
+
+select
+    p.product_id,
+    p.product_name,
+    p.points,
+    count(r.product_id) 楽天商品数
+from
+    t_products p
+    left join t_rakuten_products r on
+        r.item_name like
+        REPLACE(
+            concat('%', REPLACE(p.product_name, ' ', '%'), '%'),
+            '　',
+            '%'
+        ) OR r.catchcopy like REPLACE(
+            concat('%', REPLACE(p.product_name, ' ', '%'), '%'),
+            '　',
+            '%'
+        ) or r.item_caption like REPLACE(
+            concat('%', REPLACE(p.product_name, ' ', '%'), '%'),
+            '　',
+            '%'
+        )
+GROUP BY
+    p.product_id,
+    p.product_name,
+    p.points
+LIMIT
+  1000
 ;
+
+select * from t_rakuten_products where item_name like '%ディオール%アディクト%リップ%マキシマイザー%';

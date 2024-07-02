@@ -99,7 +99,7 @@ class TValiation extends Model
             ->with('product')
             ->with('product.maker')
             ->with('product.brand')
-            ->limit(300)
+            ->limit(100)
             ->get();
     }
 }
