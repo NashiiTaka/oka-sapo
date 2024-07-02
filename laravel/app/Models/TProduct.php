@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Services\OsusumeParams;
+
 /**
  * 
  *
@@ -67,17 +70,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class TProduct extends Model
 {
-    use HasFactory;
-
-    /**
-     * Undocumented function
-     *
-     * @param array $params key:valueペアの検索パラメータを受け取る。内部未実装。
-     * @return array<TProduct> 推薦商品の配列を返却する。
-     */
-    static function getRecommendations(array $params)
+    public function maker(): BelongsTo
     {
-        return TProduct::limit(3)->get();
+        return $this->belongsTo(TMaker::class, 'maker_id', 'maker_id');
+    }
+
+    public function brand(): BelongsTo
+    {
+        return $this->belongsTo(TBrand::class, 'brand_id', 'brand_id');
     }
 
     /**
@@ -88,5 +88,41 @@ class TProduct extends Model
     public function valiations(): HasMany
     {
         return $this->hasMany(TValiation::class, 'product_id', 'product_id');
+    }
+
+    use HasFactory;
+
+    /**
+     * 推薦商品の配列を返却する。
+     *
+     * @param OsusumeParams $params 検索パラメータ
+     * @return array<TProduct> 推薦商品の配列を返却する。
+     */
+    static function getRecommendations(OsusumeParams $params)
+    {
+        $valiationsWithProduct = TValiation::getRecommendations($params);
+
+        // バリエーション情報から商品情報を取得。
+        $ret = [];
+        $insertedProductIds = [];
+        $idAndValiations = [];
+
+        foreach ($valiationsWithProduct as $valiation) {
+            if(count($insertedProductIds) <= 2 && !in_array($valiation->product_id, $insertedProductIds)){
+                $ret[] = $valiation->product;
+                $insertedProductIds[] = $valiation->product_id;
+            }
+            
+            if(in_array($valiation->product_id, $insertedProductIds)){
+                $idAndValiations[$valiation->product_id] = $idAndValiations[$valiation->product_id] ?? [];
+                $idAndValiations[$valiation->product_id][] = $valiation;
+            }
+        }
+
+        foreach ($ret as $product) {
+            $product->valiations = $idAndValiations[$product->product_id];
+        }
+
+        return $ret;
     }
 }

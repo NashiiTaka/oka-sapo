@@ -195,8 +195,42 @@ order by
     v.genre_level3_genre_id;
 
 -- level1 美容・コスメ・香水
-select count(*) from v_rakuten_genres where genre_level1_genre_id = 100939 and children_cnt = 0;
+select
+    count(*)
+from
+    v_rakuten_genres
+where
+    genre_level1_genre_id = 100939
+    and children_cnt = 0;
+
 -- level2 ベースメイク・メイクアップ
-select * from v_rakuten_genres where genre_level2_genre_id = 204233;
+select
+    *
+from
+    v_rakuten_genres
+where
+    genre_level2_genre_id = 204233;
+
 -- level3 口紅・リップスティック, リップライナー, リップグロス すべて小ジャンルは0
-select * from v_rakuten_genres where genre_level3_genre_id in(216600, 503106, 216620);
+select
+    *
+from
+    v_rakuten_genres
+where
+    genre_level3_genre_id in(216600, 503106, 216620);
+
+select
+    *
+from
+    t_valiations v
+WHERE
+    v.is_active = 1
+order by
+    -- ユークリッド距離
+    sqrt(
+        pow(v.r - 215, 2) + pow(v.g - 81, 2) + pow(v.g - 77, 2)
+    ) asc;
+
+SELECT
+    LEAST(1, 5, 2, 3, 4)
+;
