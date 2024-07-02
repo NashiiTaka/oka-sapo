@@ -1,6 +1,5 @@
 <x-layouts.public title="シングルアンサー | コスメ★ピシャット">
-
-  <body>
+{{-- 画像ここ --}}
     <h1 class="text-3xl">{{ nl2br(e($message)) }}</h1>
     @foreach ($options as $o)
       <a href="{{ $o['goto'] }}"
@@ -8,5 +7,4 @@
         {{ $o['display'] }}
       </a>
     @endforeach
-  </body>
 </x-layouts.public>
