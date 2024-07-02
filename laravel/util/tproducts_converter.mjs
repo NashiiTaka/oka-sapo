@@ -1,7 +1,8 @@
-import jsonData from './datas/tproducts/20240626_1158_lips_00001-00367.json' assert { type: 'json' };
+import jsonData from './datas/tproducts/20240702_1612_lips_00001-00382.json' assert { type: 'json' };
 import { JSDOM } from 'jsdom';
 import { outputCsv } from './util.mjs';
 import XLSX from 'xlsx';
+import path from 'path';
 
 const mapping = {
     brand: 'brand',
@@ -22,25 +23,12 @@ const mapping = {
     フィールド: 'detail_info_html',
     フィールド1: 'valiation_info_html',
     フィールド2: 'more_detail_info_html',
+    フィールド3: 'main_img_html',
     価格: 'price',
     点数: 'points',
 };
 
 const convertedArr = [];
-// const detailInfoMenues = [
-//     'メーカー',
-//     'ブランド名',
-//     'アイテムカテゴリ',
-//     'ベストコスメ',
-//     'ランキングIN',
-//     '商品説明',
-//     '色',
-//     '使い方',
-//     '公式サイト',
-//     'Pickupカテゴリ',
-//     '関心の高い<br>成分・特徴<a href="https://istyle.collasq.co…id=1033" target="_blank" title="成分・特徴について">?</a>',
-//     '使用上の注意'
-// ];
 
 const detailInfoMenuesWithAction = {
     'メーカー': {
@@ -79,6 +67,13 @@ const moreDetailInfoMenuesWithAction = {
     '成分': { renamed: 'ingredients', action: 'textContent' },
 };
 
+const makers = [];
+const brands = [];
+const categories = [];
+const products = [];
+const valiations = [];
+const imgUrls = [];
+
 for (const json of jsonData) {
     const converted = {};
     for (const mapKey in mapping) {
@@ -105,6 +100,16 @@ for (const json of jsonData) {
 
             converted['valiations'] = values;
         }
+
+        if (mapKey === 'フィールド3') {
+            const domImg = new JSDOM(json[mapKey]);
+            const mainImageUrl = domImg.window.document.querySelector('img').src.split('?')[0];
+            const product_id = json['タイトルURL'].match(/https\:\/\/www\.cosme\.net\/products\/(\d+)\//)[1];
+            converted['img_file_name'] = product_id + path.extname(mainImageUrl);
+            imgUrls.push({product_id: product_id, img_url: mainImageUrl});
+        }
+
+
     }
     const dom = new JSDOM(converted['detail_info_html']);
     dom.window.document.querySelectorAll('dl').forEach((dl) => {
@@ -175,12 +180,6 @@ function addCategoryIfNeeds(categoryName, categoryUrl) {
     return category_id;
 }
 
-const makers = [];
-const brands = [];
-const categories = [];
-const products = [];
-const valiations = [];
-
 for (const converted of convertedArr) {
     // メーカーIDが欠損したデータがあったので、その場合は他の行の同ブランドから、メーカーIDを取得する
     if (!converted.maker_id) {
@@ -234,6 +233,7 @@ for (const converted of convertedArr) {
         product_name: converted.product_name,
         maker_id: converted.maker_id,
         brand_id: converted.brand_id,
+        img_file_name: converted.img_file_name,
         category1_id: category1_id,
         category2_id: category2_id,
         jan_code: converted.jan_code,
@@ -270,6 +270,7 @@ outputCsv('t_brands', brands);
 outputCsv('m_categories', categories);
 outputCsv('t_products', products);
 outputCsv('valiations_source_imgs', valiations);
+outputCsv('main_imgs', imgUrls);
 
 // // Excel用に、300文字以上の文字列は300文字に切り詰める
 // for(const converted of convertedArr) {

@@ -17,6 +17,8 @@ class MRakutenGenresSeeder extends CsvSeeder
         $this->table = 'm_rakuten_genres';
         $this->filename = base_path() . '/util/outcsv/m_rakuten_genres.csv';
         $this->timestamps = true;
+        $this->created_at = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
+        $this->updated_at = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
     }
 
     /**

@@ -18,6 +18,8 @@ class TRakutenProductsSeeder extends CsvSeeder
         $this->table = 't_rakuten_products';
         $this->filenames = $this->getFilesStartingWith(base_path() . '/util/outcsv/', 't_rakuten_products');
         $this->timestamps = true;
+        $this->created_at = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
+        $this->updated_at = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
     }
 
     /**

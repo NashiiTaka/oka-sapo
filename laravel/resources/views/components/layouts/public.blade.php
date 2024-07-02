@@ -10,10 +10,10 @@
     @vite('resources/css/app.css')
 </head>
 <body class="flex flex-col min-h-screen">
-    <div class="flex justify-center items-center">
-        <img src="/img/josei.png" alt="Home Icon" class="h-20 w-20">
-    </div>
-    <main class="flex-grow">
+    <main class="flex-grow p-5">
+      <div class="flex justify-center items-center h-20 w-full">
+        <img src="/img/josei.png" alt="Home Icon" class="h-full object-cover rounded-full">
+      </div>
     {{ $slot }}
     </main>
 

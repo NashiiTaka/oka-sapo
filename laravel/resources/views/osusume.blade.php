@@ -5,7 +5,7 @@
         @foreach ($recommendations as $recommendation)
           <div class="min-w-[250px] bg-white p-4 border rounded shadow">
             <p class="text-base font-bold">{{ $recommendation->product_name }}</p>
-            <img src="{{ $recommendation->valiations[0]->getImagePath() }}"
+            <img src="{{ $recommendation->getImagePath() }}"
               alt="{{ $recommendation->valiations[0]->valiation_name }}">
             <p class="text-xs font-semibold">{{ $recommendation->maker->maker_name }}</p>
             <p class="text-xs font-semibold">{{ $recommendation->brand->brand_name }}</p>

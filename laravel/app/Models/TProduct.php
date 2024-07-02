@@ -81,6 +81,16 @@ class TProduct extends Model
     }
 
     /**
+     * 画像パスを取得する
+     *
+     * @return string 画像パス
+     */
+    public function getImagePath(): string
+    {
+        return '/img/main/' . $this->img_file_name;
+    }
+
+    /**
      * バリエーション情報を取得
      *
      * @return HasMany

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('category1_id')->index()->comment('カテゴリ1ID');
             $table->integer('category2_id')->nullable()->index()->comment('カテゴリ2ID');
             $table->string('jan_code')->nullable()->comment('JANコード、未設定の場合有り');
+            $table->string('img_file_name')->nullable()->comment('画像ファイル名');
             $table->date('release_date')->nullable()->comment('発売日');
             $table->date('release_date_additional')->nullable()->comment('追加発売日');
             $table->float('rating')->nullable()->comment('レビュー点数');
