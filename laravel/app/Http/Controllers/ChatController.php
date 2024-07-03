@@ -36,7 +36,7 @@ class ChatController extends Controller
             'multiple' => false
         ],
         'best-one-lead' => [
-            'message' => "当店では、約◯種類のリップアイテムを取り扱っております。これからあなたにピッタリ似合うリップを探すお手伝いをさせてください！",
+            'message' => "当店では、300種類以上のリップアイテムを取り扱っております。これからあなたにピッタリ似合うリップを探すお手伝いをさせてください！",
             'options' => [
                 ['display' => '次へ', 'goto' => '/chat/best-one-lead2'],
             ],
@@ -135,35 +135,6 @@ class ChatController extends Controller
                 ['display' => 'デート・婚活', 'goto' => '/osusume/scene'],
                 ['display' => '就職活動', 'goto' => '/osusume/scene'],
                 ['display' => 'アクティブな日', 'goto' => '/osusume/scene'],
-            ],
-            'multiple' => false
-        ],
-        // ーーーーーーーーーーーー　ここから色　ーーーーーーーーーーーー
-        'red' => [
-            'message' => "華やかなレッド系がおすすめです。",
-            'options' => [
-                ['display' => '次へ', 'goto' => '/chat/shitukan'],
-            ],
-            'multiple' => false
-        ],
-        'pink' => [
-            'message' => "キュートで可愛らしいピンク系がおすすめです。",
-            'options' => [
-                ['display' => '次へ', 'goto' => '/chat/shitukan'],
-            ],
-            'multiple' => false
-        ],
-        'beige' => [
-            'message' => "知的でナチュラルなベージュ系がおすすめです。",
-            'options' => [
-                ['display' => '次へ', 'goto' => '/chat/shitukan'],
-            ],
-            'multiple' => false
-        ],
-        'orange' => [
-            'message' => "アクティブではつらつとしたオレンジ系がおすすめです。",
-            'options' => [
-                ['display' => '次へ', 'goto' => '/chat/shitukan'],
             ],
             'multiple' => false
         ],
@@ -417,18 +388,22 @@ class ChatController extends Controller
                     switch ($request->answer) {
                         case 'ゴージャス、華やか':
                             // レッド系、ローズワイン系
+                            $message = '華やかなレッド系がおすすめです。';
                             $params->colors = [new RgbColor('#D7514D'), new RgbColor('#B0737B')];
                             break;
                         case '女性らしい、スイート':
                             // ピンク系
+                            $message = 'キュートで可愛らしいピンク系がおすすめです。';
                             $params->colors = [new RgbColor('#DD609A')];
                             break;
                         case 'クール、知的':
                             // ベージュ系、ブラウン系
+                            $message = '知的でナチュラルなベージュ系がおすすめです。';
                             $params->colors = [new RgbColor('#CF9D5E'), new RgbColor('#A06757')];
                             break;
                         case 'ヘルシー、はつらつ':
                             // オレンジ系
+                            $message = 'アクティブではつらつとしたオレンジ系がおすすめです。';
                             $params->colors = [new RgbColor('#EBAB54')];
                             break;
                         default:
@@ -439,18 +414,22 @@ class ChatController extends Controller
                     switch ($request->answer) {
                         case '結婚式・パーティー':
                             // レッド系、ローズワイン系
+                            $message = '華やかなレッド系がおすすめです。';
                             $params->colors = [new RgbColor('#D7514D'), new RgbColor('#B0737B')];
                             break;
                         case 'デート・婚活':
                             // ピンク系
+                            $message = 'キュートで可愛らしいピンク系がおすすめです。';
                             $params->colors = [new RgbColor('#DD609A')];
                             break;
                         case '就職活動':
                             // ベージュ系、ブラウン系
+                            $message = '知的でナチュラルなベージュ系がおすすめです。';
                             $params->colors = [new RgbColor('#CF9D5E'), new RgbColor('#A06757')];
                             break;
                         case 'アクティブな日':
                             // オレンジ系
+                            $message = 'アクティブではつらつとしたオレンジ系がおすすめです。';
                             $params->colors = [new RgbColor('#EBAB54')];
                             break;
                         default:
@@ -463,7 +442,7 @@ class ChatController extends Controller
 
         $recommendations = TProduct::getRecommendations($params);
 
-        return view('osusume', compact('recommendations'));
+        return view('osusume', compact('recommendations', 'message'));
     }
 
 

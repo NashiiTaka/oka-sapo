@@ -1,4 +1,5 @@
 <x-layouts.public title="おすすめ商品♪ | コスメ★ピシャット">
+  <h1 class="text-lg mt-4 mx-4" id="animated-message"></h1>
   <div class="container mx-auto py-6">
     <div class="overflow-x-auto">
       <div class="flex space-x-4 px-3">
@@ -34,6 +35,23 @@
     </div>
   </div>
   <div class="p-5">
-    <x-a-button href="/chat/shitukan" display="詳しい条件を指定" />
+    <x-a-button href="/chat/shitukan" display="もっと他の商品もさがしてみる" />
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const message = `{!! nl2br(e($message)) !!}`;
+      const messageContainer = document.getElementById('animated-message');
+      let i = 0;
+      
+      function typeWriter() {
+        if (i < message.length) {
+          messageContainer.innerHTML += message.charAt(i);
+          i++;
+          setTimeout(typeWriter, 50);
+        }
+      }
+      
+      typeWriter();
+    });
+  </script>
 </x-layouts.public>
