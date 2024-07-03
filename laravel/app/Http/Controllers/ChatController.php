@@ -27,11 +27,11 @@ class ChatController extends Controller
      */
     private static $messages = [
         'index' => [
-            'message' => "こんにちは。コスメピシャットへようこそ！本日はどのような目的でご来店いただいたのですか？",
+            'message' => "こんにちは。コスメピシャットへようこそ！本日は何かお手伝いできることはありますか？",
             'options' => [
                 ['display' => '新しいアイテムが欲しい。', 'goto' => '/chat/ask-purpose'],
                 ['display' => '良さそうなものがあれば買いたい。', 'goto' => '/chat/best-one-lead'],
-                ['display' => 'どんな商品があるか情報だけを知りたい。', 'goto' => '/chat/best-one-lead']
+                ['display' => 'どんな商品があるか情報を知りたい。', 'goto' => '/chat/best-one-lead']
             ],
             'multiple' => false
         ],
@@ -52,7 +52,7 @@ class ChatController extends Controller
         'ask-purpose' => [
             'message' => "今回の購入目的を教えていただけますか？",
             'options' => [
-                ['display' => '良さげなものだったら新しいアイテムが欲しい。', 'goto' => '/chat/best-one-lead'],
+                ['display' => '良さそうなものだったら新調したい。', 'goto' => '/chat/best-one-lead'],
                 ['display' => '今使用しているものがなくなりそう。', 'goto' => '/chat/repeat'],
                 ['display' => '今使用しているものに不満、またはお悩みやトラブルがある。', 'goto' => '/chat/now-use'],
                 ['display' => '印象を変えたい。', 'goto' => '/chat/impression'],
@@ -69,14 +69,14 @@ class ChatController extends Controller
         'repeat-buy' => [
             'message' => "リピート購入しますか？",
             'options' => [
-                ['display' => 'メーカー、商品名色番号を教えてください。', 'goto' => '/chat/'], //ここのページ打ち込み型にする？
+                ['display' => 'メーカー、商品名、色番号を教えてください。', 'goto' => '/chat/'], //ここのページ打ち込み型にする？
             ],
             'multiple' => false
         ],
         'now-use' => [
             'message' => "今使っているもののメーカー、商品名、色番号を教えてください。",
             'options' => [
-                ['display' => 'メーカー、商品名色番号を教えてください。', 'goto' => '/chat/nayami'], //ここのページ打ち込み型にする？
+                ['display' => 'メーカー、商品名、色番号を教えてください。', 'goto' => '/chat/nayami'], //ここのページ打ち込み型にする？
             ],
             'multiple' => false
         ],
@@ -101,11 +101,11 @@ class ChatController extends Controller
         ],
         // ここから大枠のヒアリング　ーーーーーーーーーーーーーーーーーーーーーーーーー
         'price-select' => [
-            'message' => "１本あたりの予算はどれくらいでしょうか？",
+            'message' => "１本あたりの予算を教えてください。",
             'options' => [
                 ['display' => '1,000円未満', 'goto' => '/chat/scene-select'],
-                ['display' => '1,000円〜2,000円未満', 'goto' => '/chat/scene-select'],
-                ['display' => '2,000円〜3,000円未満', 'goto' => '/chat/scene-select'],
+                ['display' => '1,000円〜2,000円', 'goto' => '/chat/scene-select'],
+                ['display' => '2,000円〜3,000円', 'goto' => '/chat/scene-select'],
                 ['display' => '3,000円以上', 'goto' => '/chat/scene-select'],
             ],
             'multiple' => false
@@ -133,7 +133,7 @@ class ChatController extends Controller
             'options' => [
                 ['display' => '結婚式・パーティー', 'goto' => '/osusume/scene'],
                 ['display' => 'デート・婚活', 'goto' => '/osusume/scene'],
-                ['display' => '就職活動', 'goto' => '/osusume/scene'],
+                ['display' => '就職活動・証明写真', 'goto' => '/osusume/scene'],
                 ['display' => 'アクティブな日', 'goto' => '/osusume/scene'],
             ],
             'multiple' => false
@@ -194,7 +194,7 @@ class ChatController extends Controller
             'multiple' => false
         ],
         'user-personal-color' => [
-            'message' => "あなたのパーソナルカラーを選択して下さい？", //ここの質問ローカルホストに保存？
+            'message' => "あなたのパーソナルカラーを選択して下さい。", //ここの質問ローカルホストに保存？
             'options' => [
                 ['display' => 'イエベ春', 'goto' => '/osusume'], //ここまだ
                 ['display' => 'ブルベ夏', 'goto' => '/osusume'],
@@ -422,7 +422,7 @@ class ChatController extends Controller
                             $message = 'キュートで可愛らしいピンク系がおすすめです。';
                             $params->colors = [new RgbColor('#DD609A')];
                             break;
-                        case '就職活動':
+                        case '就職活動・証明写真':
                             // ベージュ系、ブラウン系
                             $message = '知的でナチュラルなベージュ系がおすすめです。';
                             $params->colors = [new RgbColor('#CF9D5E'), new RgbColor('#A06757')];
