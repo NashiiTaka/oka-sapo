@@ -111,7 +111,7 @@ class ChatController extends Controller
             'multiple' => false
         ],
         'scene-select' => [
-            'message' => "今回お探しのアイテムは、普段使いですか？それとも特別な日のためにお探しですか？",
+            'message' => "今回お探しのアイテムは、普段使いですか？それとも、特別な日のためにお探しですか？",
             'options' => [
                 ['display' => '普段使い', 'goto' => '/chat/impression'],
                 ['display' => '特別な日', 'goto' => '/chat/scene'],
