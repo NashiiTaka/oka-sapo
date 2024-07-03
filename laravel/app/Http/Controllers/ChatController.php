@@ -30,7 +30,7 @@ class ChatController extends Controller
             'message' => "こんにちは。コスメピシャットへようこそ！本日はどのような目的でご来店いただいたのですか？",
             'options' => [
                 ['display' => '新しいアイテムが欲しい。', 'goto' => '/chat/ask-purpose'],
-                ['display' => '良さげなものがあれば買いたい。', 'goto' => '/chat/best-one-lead'],
+                ['display' => '良さそうなものがあれば買いたい。', 'goto' => '/chat/best-one-lead'],
                 ['display' => 'どんな商品があるか情報だけを知りたい。', 'goto' => '/chat/best-one-lead']
             ],
             'multiple' => false
