@@ -15,6 +15,13 @@ use App\Services\RgbColor;
 
 class ChatController extends Controller
 {
+    public function firstView()
+    {
+        return view('first-view');
+    }
+    
+
+
     /**
      * 回答を保持するセッションキー
      */
@@ -330,28 +337,28 @@ class ChatController extends Controller
         'iebe-aki' => [
             'message' => "あなたのパーソナルカラーはイエベ秋です。",
             'options' => [
-                ['display' => 'はい', 'goto' => '/osusume'],  //ここまだ
+                ['display' => '診断を終了し、HOMEに戻る', 'goto' => '/chat/index'],
             ],
             'multiple' => false
         ],
         'burube-fuyu' => [
             'message' => "あなたのパーソナルカラーはブルベ冬です。",
             'options' => [
-                ['display' => 'はい', 'goto' => '/osusume'],  //ここまだ
+                ['display' => '診断を終了し、HOMEに戻る', 'goto' => '/chat/index'],
             ],
             'multiple' => false
         ],
         'burube-natu' => [
             'message' => "あなたのパーソナルカラーはブルベ夏です。",
             'options' => [
-                ['display' => 'はい', 'goto' => '/osusume'],   //ここまだ
+                ['display' => '診断を終了し、HOMEに戻る', 'goto' => '/chat/index'],
             ],
             'multiple' => false
         ],
         'iebe-haru' => [
             'message' => "あなたのパーソナルカラーはイエベ春です。",
             'options' => [
-                ['display' => 'はい', 'goto' => '/osusume'],   //ここまだ
+                ['display' => '診断を終了し、HOMEに戻る', 'goto' => '/chat/index'],
             ],
             'multiple' => false
         ],

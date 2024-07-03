@@ -6,7 +6,9 @@ use App\Http\Controllers\FaceDetectionController;
 use App\Http\Middleware\BeforeChatMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ChatController::class, 'index']);
+// Route::get('/', [ChatController::class, 'index']);
+Route::get('/', [ChatController::class, 'firstView']); // トップページをfirstViewに変更
+
 
 // localhost/chat/ask-message という様なアクセスがあると、
 // {message}のところが、ask-messageになっている。
