@@ -2,7 +2,7 @@
 
   <div class="flex justify-center items-center mt-8">
     {{-- 女性のイラスト --}}
-    <img src="/img/josei.png" alt="Home Icon" class="h-32 w-32">
+    <img src="/img/josei2.png" alt="Home Icon" class="h-32 w-32">
   </div>
 
   <h1 class="text-lg mt-4 mb-8 mx-4" id="animated-message"></h1>
