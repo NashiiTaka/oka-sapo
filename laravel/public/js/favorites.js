@@ -23,6 +23,10 @@ function getArrayFromLocalStorage(key) {
     return jsonString ? JSON.parse(jsonString) : [];
 }
 
+function getFavoritesQueryParameters() {
+    return encodeURI(getArrayFromLocalStorage('favorites').join(','));
+}
+
 function addFavorite(productId) {
     const favorites = getArrayFromLocalStorage('favorites');
     favorites.push(productId);
@@ -42,3 +46,4 @@ function existsFavorite(productId) {
     const favorites = getArrayFromLocalStorage('favorites');
     return favorites.includes(productId);
 }
+
