@@ -20,6 +20,7 @@ Route::get('/form', [ChatController::class, 'form']); //打ち込み型のルー
 Route::post('/multiple', [ChatController::class, 'multiple']); //複数選択のルート
 
 Route::get('/face-detection', [FaceDetectionController::class, 'index'])->name('face-detection.index');
+Route::get('/face-detection/{product_id}', [FaceDetectionController::class, 'withProduct'])->name('face-detection.with-product');
 
 // ルーティングのグループ化
 // グループ化する接頭辞
