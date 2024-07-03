@@ -20,3 +20,6 @@ laravel/util/outcsv/main_imgs.csv
 laravel/util/outcsv/valiations_source_imgs.csv
 laravel/util/outcsv/valiations_with_color.csv
 laravel/util/outcsv/valiations_with_color.csv
+laravel/util/test.py
+laravel/util/outcsv/valiations_source_imgs.csv
+laravel/util/outcsv/valiations_with_color.csv

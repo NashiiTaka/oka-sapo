@@ -440,9 +440,9 @@ class ChatController extends Controller
             }
         }
 
-        $recommendations = TProduct::getRecommendations($params);
+        $products = TProduct::getRecommendations($params);
 
-        return view('osusume', compact('recommendations', 'message'));
+        return view('osusume', compact('products', 'message'));
     }
 
 
