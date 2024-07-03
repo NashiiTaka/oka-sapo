@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FaceDetectionController;
 use App\Http\Middleware\BeforeChatMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,11 @@ Route::get('/', [ChatController::class, 'index']);
 Route::get('/chat/{message}', [ChatController::class, 'chat'])->middleware(BeforeChatMiddleware::class);
 Route::post('/passer', [ChatController::class, 'passer']);
 Route::get('/osusume/{from}', [ChatController::class, 'osusume']);
+Route::get('/osusume/{from}/{colorCode}', [ChatController::class, 'osusume']);
 Route::get('/form', [ChatController::class, 'form']); //打ち込み型のルート設定
 Route::post('/multiple', [ChatController::class, 'multiple']); //複数選択のルート
+
+Route::get('/face-detection', [FaceDetectionController::class, 'index'])->name('face-detection.index');
 
 // ルーティングのグループ化
 // グループ化する接頭辞

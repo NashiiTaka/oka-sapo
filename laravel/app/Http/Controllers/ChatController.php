@@ -62,7 +62,7 @@ class ChatController extends Controller
         'repeat' => [
             'message' => "リピート購入しますか？",
             'options' => [
-                ['display' => 'はい。', 'goto' => '/chat/repeat-buy'], 
+                ['display' => 'はい。', 'goto' => '/chat/repeat-buy'],
             ],
             'multiple' => false
         ],
@@ -142,28 +142,28 @@ class ChatController extends Controller
         'red' => [
             'message' => "華やかなレッド系がおすすめです。",
             'options' => [
-                ['display' => '次へ', 'goto' => '/chat/shitukan'], 
+                ['display' => '次へ', 'goto' => '/chat/shitukan'],
             ],
             'multiple' => false
         ],
         'pink' => [
             'message' => "キュートで可愛らしいピンク系がおすすめです。",
             'options' => [
-                ['display' => '次へ', 'goto' => '/chat/shitukan'], 
+                ['display' => '次へ', 'goto' => '/chat/shitukan'],
             ],
             'multiple' => false
         ],
         'beige' => [
             'message' => "知的でナチュラルなベージュ系がおすすめです。",
             'options' => [
-                ['display' => '次へ', 'goto' => '/chat/shitukan'], 
+                ['display' => '次へ', 'goto' => '/chat/shitukan'],
             ],
             'multiple' => false
         ],
         'orange' => [
             'message' => "アクティブではつらつとしたオレンジ系がおすすめです。",
             'options' => [
-                ['display' => '次へ', 'goto' => '/chat/shitukan'], 
+                ['display' => '次へ', 'goto' => '/chat/shitukan'],
             ],
             'multiple' => false
         ],
@@ -276,32 +276,32 @@ class ChatController extends Controller
         'color-check' => [
             'message' => "肌はどちらかというと明るめですか？",
             'options' => [
-                ['display' => 'はい', 'goto' => '/chat/color-check-1'], 
-                ['display' => 'いいえ', 'goto' => '/chat/color-check-2'], 
+                ['display' => 'はい', 'goto' => '/chat/color-check-1'],
+                ['display' => 'いいえ', 'goto' => '/chat/color-check-2'],
             ],
             'multiple' => false
         ],
         'color-check-1' => [
             'message' => "地毛の色が暗めの茶色、もしくは黒に近いですか？",
             'options' => [
-                ['display' => 'はい', 'goto' => '/chat/color-check-1-1'], 
-                ['display' => 'いいえ', 'goto' => '/chat/color-check-1-2'], 
+                ['display' => 'はい', 'goto' => '/chat/color-check-1-1'],
+                ['display' => 'いいえ', 'goto' => '/chat/color-check-1-2'],
             ],
             'multiple' => false
         ],
         'color-check-1-1' => [
             'message' => "肌色が良くないと言われることが多いですか？",
             'options' => [
-                ['display' => 'はい', 'goto' => '/chat/color-check-1-1-1'], 
-                ['display' => 'いいえ', 'goto' => '/chat/color-check-1-2'], 
+                ['display' => 'はい', 'goto' => '/chat/color-check-1-1-1'],
+                ['display' => 'いいえ', 'goto' => '/chat/color-check-1-2'],
             ],
             'multiple' => false
         ],
         'color-check-1-1-1' => [
             'message' => "洋服などは、はっきりとしたコントラストのある色がなじみますか？",
             'options' => [
-                ['display' => 'はい', 'goto' => '/chat/burube-fuyu'], 
-                ['display' => 'いいえ', 'goto' => '/chat/iebe-aki'], 
+                ['display' => 'はい', 'goto' => '/chat/burube-fuyu'],
+                ['display' => 'いいえ', 'goto' => '/chat/iebe-aki'],
             ],
             'multiple' => false
         ],
@@ -309,24 +309,24 @@ class ChatController extends Controller
         'color-check-1-2' => [
             'message' => "日焼けしやすいですか？",
             'options' => [
-                ['display' => 'はい', 'goto' => '/chat/color-check-1-2-1'], 
-                ['display' => 'いいえ', 'goto' => '/chat/color-check-1-2-2'], 
+                ['display' => 'はい', 'goto' => '/chat/color-check-1-2-1'],
+                ['display' => 'いいえ', 'goto' => '/chat/color-check-1-2-2'],
             ],
             'multiple' => false
         ],
         'color-check-1-2-1' => [
             'message' => "洋服などはブラウン、ゴールド、やスモーキーカラーがなじみますか？",
             'options' => [
-                ['display' => 'はい', 'goto' => '/chat/iebe-aki'], 
-                ['display' => 'いいえ', 'goto' => '/chat/burube-fuyu'], 
+                ['display' => 'はい', 'goto' => '/chat/iebe-aki'],
+                ['display' => 'いいえ', 'goto' => '/chat/burube-fuyu'],
             ],
             'multiple' => false
         ],
         'color-check-1-2-2' => [
             'message' => "洋服などは黒、ネイビー、グレーなどの無彩色がしっくりきますか？",
             'options' => [
-                ['display' => 'はい', 'goto' => '/chat/burube-natu'], 
-                ['display' => 'いいえ', 'goto' => '/chat/iebe-haru'], 
+                ['display' => 'はい', 'goto' => '/chat/burube-natu'],
+                ['display' => 'いいえ', 'goto' => '/chat/iebe-haru'],
             ],
             'multiple' => false
         ],
@@ -335,24 +335,24 @@ class ChatController extends Controller
         'color-check-2' => [
             'message' => "地毛の色が暗めの茶色、もしくは黒に近いですか？",
             'options' => [
-                ['display' => 'はい', 'goto' => '/chat/color-check-1-2'], 
-                ['display' => 'いいえ', 'goto' => '/chat/color-check-2-2'], 
+                ['display' => 'はい', 'goto' => '/chat/color-check-1-2'],
+                ['display' => 'いいえ', 'goto' => '/chat/color-check-2-2'],
             ],
             'multiple' => false
         ],
         'color-check-2-2' => [
             'message' => "頬に赤みが出やすいですか？",
             'options' => [
-                ['display' => 'はい', 'goto' => '/chat/color-check-1-2-2'], 
-                ['display' => 'いいえ', 'goto' => '/chat/color-check-2-2-2'], 
+                ['display' => 'はい', 'goto' => '/chat/color-check-1-2-2'],
+                ['display' => 'いいえ', 'goto' => '/chat/color-check-2-2-2'],
             ],
             'multiple' => false
         ],
         'color-check-2-2-2' => [
             'message' => "洋服などは黒、ネイビー、グレーなどの無彩色がしっくりきますか？",
             'options' => [
-                ['display' => 'はい', 'goto' => '/chat/burube-natu'], 
-                ['display' => 'いいえ', 'goto' => '/chat/iebe-haru'], 
+                ['display' => 'はい', 'goto' => '/chat/burube-natu'],
+                ['display' => 'いいえ', 'goto' => '/chat/iebe-haru'],
             ],
             'multiple' => false
         ],
@@ -403,58 +403,62 @@ class ChatController extends Controller
      * @param 'impression'|'scene' $from 遷移元
      * @return void
      */
-    public function osusume(Request $request, $from)
+    public function osusume(Request $request, $from, $colorCode = null)
     {
         $params = new OsusumeParams();
 
-        // ここで、$fromによって、おすすめの商品を取得する処理を書く
-        switch ($from) {
-            case 'impression':
-                // 印象によっておすすめの商品を取得
-                switch ($request->answer) {
-                    case 'ゴージャス、華やか':
-                        // レッド系、ローズワイン系
-                        $params->colors = [new RgbColor('#D7514D'), new RgbColor('#B0737B')];
-                        break;
-                    case '女性らしい、スイート':
-                        // ピンク系
-                        $params->colors = [new RgbColor('#DD609A')];
-                        break;
-                    case 'クール、知的':
-                        // ベージュ系、ブラウン系
-                        $params->colors = [new RgbColor('#CF9D5E'), new RgbColor('#A06757')];
-                        break;
-                    case 'ヘルシー、はつらつ':
-                        // オレンジ系
-                        $params->colors = [new RgbColor('#EBAB54')];
-                        break;
-                    default:
-                        throw new Exception('不正な選択です。');
-                }
-                break;
-            case 'scene':
-                switch ($request->answer) {
-                    case '結婚式・パーティー':
-                        // レッド系、ローズワイン系
-                        $params->colors = [new RgbColor('#D7514D'), new RgbColor('#B0737B')];
-                        break;
-                    case 'デート・婚活':
-                        // ピンク系
-                        $params->colors = [new RgbColor('#DD609A')];
-                        break;
-                    case '就職活動':
-                        // ベージュ系、ブラウン系
-                        $params->colors = [new RgbColor('#CF9D5E'), new RgbColor('#A06757')];
-                        break;
-                    case 'アクティブな日':
-                        // オレンジ系
-                        $params->colors = [new RgbColor('#EBAB54')];
-                        break;
-                    default:
-                        throw new Exception('不正な選択です。');
-                }
-                // シーンによっておすすめの商品を取得
-                break;
+        if ($colorCode) {
+            $params->colors = [new RgbColor($colorCode)];
+        } else {
+            // ここで、$fromによって、おすすめの商品を取得する処理を書く
+            switch ($from) {
+                case 'impression':
+                    // 印象によっておすすめの商品を取得
+                    switch ($request->answer) {
+                        case 'ゴージャス、華やか':
+                            // レッド系、ローズワイン系
+                            $params->colors = [new RgbColor('#D7514D'), new RgbColor('#B0737B')];
+                            break;
+                        case '女性らしい、スイート':
+                            // ピンク系
+                            $params->colors = [new RgbColor('#DD609A')];
+                            break;
+                        case 'クール、知的':
+                            // ベージュ系、ブラウン系
+                            $params->colors = [new RgbColor('#CF9D5E'), new RgbColor('#A06757')];
+                            break;
+                        case 'ヘルシー、はつらつ':
+                            // オレンジ系
+                            $params->colors = [new RgbColor('#EBAB54')];
+                            break;
+                        default:
+                            throw new Exception('不正な選択です。');
+                    }
+                    break;
+                case 'scene':
+                    switch ($request->answer) {
+                        case '結婚式・パーティー':
+                            // レッド系、ローズワイン系
+                            $params->colors = [new RgbColor('#D7514D'), new RgbColor('#B0737B')];
+                            break;
+                        case 'デート・婚活':
+                            // ピンク系
+                            $params->colors = [new RgbColor('#DD609A')];
+                            break;
+                        case '就職活動':
+                            // ベージュ系、ブラウン系
+                            $params->colors = [new RgbColor('#CF9D5E'), new RgbColor('#A06757')];
+                            break;
+                        case 'アクティブな日':
+                            // オレンジ系
+                            $params->colors = [new RgbColor('#EBAB54')];
+                            break;
+                        default:
+                            throw new Exception('不正な選択です。');
+                    }
+                    // シーンによっておすすめの商品を取得
+                    break;
+            }
         }
 
         $recommendations = TProduct::getRecommendations($params);
@@ -485,7 +489,7 @@ class ChatController extends Controller
         return view('singleanswer', compact('message', 'options', 'multiple', 'currentMessage'));
     }
 
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここ付け足したとこ（あー）
+    // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここ付け足したとこ（あー）
     // フォーム表示のメソッドを追加
     public function form()
     {
@@ -499,12 +503,12 @@ class ChatController extends Controller
         return view('form', compact('message', 'options', 'multiple'));
     }
 
-public function multiple(Request $request)
-{
-    $selectedOptions = $request->input('options', []);
-    
-    // 選択されたオプションを処理するロジックをここに追加
-    // 例えば、ログを表示したり、データベースに保存したりする
+    public function multiple(Request $request)
+    {
+        $selectedOptions = $request->input('options', []);
+
+        // 選択されたオプションを処理するロジックをここに追加
+        // 例えば、ログを表示したり、データベースに保存したりする
 
         return view('result', compact('selectedOptions'));
     }
