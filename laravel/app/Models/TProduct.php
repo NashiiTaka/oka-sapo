@@ -70,6 +70,13 @@ use App\Services\OsusumeParams;
  */
 class TProduct extends Model
 {
+    use HasFactory;
+
+    // プライマリキーのカラム名を設定
+    protected $primaryKey = 'product_id';
+    // プライマリキーが自動インクリメントされない場合
+    public $incrementing = false;
+
     public function maker(): BelongsTo
     {
         return $this->belongsTo(TMaker::class, 'maker_id', 'maker_id');
@@ -99,8 +106,6 @@ class TProduct extends Model
     {
         return $this->hasMany(TValiation::class, 'product_id', 'product_id');
     }
-
-    use HasFactory;
 
     /**
      * 推薦商品の配列を返却する。

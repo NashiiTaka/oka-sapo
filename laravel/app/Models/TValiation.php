@@ -48,6 +48,11 @@ class TValiation extends Model
 {
     use HasFactory;
 
+    // プライマリキーのカラム名を設定
+    protected $primaryKey = 'product_id';
+    // プライマリキーが自動インクリメントされない場合
+    public $incrementing = false;
+
     /**
      * 
      * 商品情報を取得

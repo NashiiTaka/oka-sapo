@@ -1,11 +1,3 @@
-const colors = [
-  '#FF0000', '#FF4500', '#FF6347', '#FF7F50', '#FFA07A',
-  '#FA8072', '#E9967A', '#FF69B4', '#FF6EB4', '#FF1493',
-  '#D02090', '#C71585', '#DB7093', '#CD5C5C', '#DC143C',
-  '#B22222', '#8B0000', '#7B0000', '#008000', '#006400',
-  '#191970', '#00008B'
-];
-
   let currentColor = 'rgba(255, 0, 0, 0.5)';
   
   function createColorPalette() {
