@@ -452,6 +452,7 @@ class ChatController extends Controller
         $params = new OsusumeParams();
 
         if ($colorCode) {
+            $message = '似た色を持つ商品をおすすめします。';
             $params->colors = [new RgbColor($colorCode)];
         } else {
             // ここで、$fromによって、おすすめの商品を取得する処理を書く
