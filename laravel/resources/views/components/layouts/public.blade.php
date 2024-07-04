@@ -12,7 +12,7 @@
 
   <title><?= $title ?? 'おかサポ' ?></title>
   @vite('resources/css/app.css')
-  <script src="/js/favorites.js"></script>
+  <script src="/js/local-storage.js"></script>
 </head>
 
 

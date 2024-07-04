@@ -32,7 +32,7 @@
             </div>
             <div class="flex flex-row gap-x-3 items-center">
               @if ($product->buy_url && strpos($product->buy_url, 'http') === 0)
-                <x-a-button href="{{ $product->buy_url }}" display="購入" target="_blank" px="6" py="2" />
+                <x-a-button href="{{ $product->buy_url }}" display="購入" px="6" py="2" />
               @endif
               @if($product->product_id)
                 <x-a-button href="/face-detection/{{ $product->product_id }}" display="試着" px="6" py="2" />

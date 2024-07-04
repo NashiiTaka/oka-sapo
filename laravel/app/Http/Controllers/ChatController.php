@@ -157,16 +157,17 @@ class ChatController extends Controller
             'multiple' => false
         ],
         'color-select' => [
-            'message' => "どんな色がお好みですか？（1つ選ぶ）", //ここの質問ローカルホストに保存？
+            'message' => "どんな色がお好みですか？",
             'options' => [
-                ['display' => 'レッド系', 'goto' => '/chat/brand-select'],
-                ['display' => 'ピンク系', 'goto' => '/chat/brand-select'],
-                ['display' => 'ブラウン系', 'goto' => '/chat/brand-select'],
-                ['display' => 'ローズ・ワイン系', 'goto' => '/chat/brand-select'],
-                ['display' => 'ベージュ系', 'goto' => '/chat/brand-select'],
-                ['display' => 'オレンジ系', 'goto' => '/chat/brand-select'],
+                ['display' => 'レッド系', 'bg-color' => '#D7514D'],
+                ['display' => 'ピンク系', 'bg-color' => '#DD609A'],
+                ['display' => 'ブラウン系', 'bg-color' => '#A06757'],
+                ['display' => 'ローズ・ワイン系', 'bg-color' => '#B0737B'],
+                ['display' => 'ベージュ系', 'bg-color' => '#CF9D5E'],
+                ['display' => 'オレンジ系', 'bg-color' => '#EBAB54'],
             ],
-            'multiple' => false //複数選択可にする
+            'goto' => '/chat/brand-select',
+            'multiple' => true //複数選択可にする
         ],
         'brand-select' => [
             'message' => "好きなブランドはありますか？（複数選択可）", //ここの質問ローカルホストに保存？
@@ -374,7 +375,72 @@ class ChatController extends Controller
         return $this->chat($request, 'index');
     }
 
-    /**
+    // 'color-select' => [
+    //     'message' => "どんな色がお好みですか？",
+    //     'options' => [
+    //         ['display' => 'レッド系', 'goto' => '/chat/brand-select'],
+    //         ['display' => 'ピンク系', 'goto' => '/chat/brand-select'],
+    //         ['display' => 'ブラウン系', 'goto' => '/chat/brand-select'],
+    //         ['display' => 'ローズ・ワイン系', 'goto' => '/chat/brand-select'],
+    //         ['display' => 'ベージュ系', 'goto' => '/chat/brand-select'],
+    //         ['display' => 'オレンジ系', 'goto' => '/chat/brand-select'],
+    //     ],
+    //     'multiple' => true //複数選択可にする
+    // ],
+
+    // Routeに以下の指定をしておくと、
+    // Route::get('/chat/{message}', [ChatController::class, 'chat']);
+    //
+    // localhost/chat/ask-purpose   => $message 'ask-purpose'
+    // localhost/chat/best-one-lead => $message 'best-one-lead'
+    // 様になって、このメソッドが呼び出される。
+    public function chat(Request $request, string $message)
+    {
+        $thisMessage = self::$messages[$message];
+        $currentMessage = $message;
+        $message = $thisMessage['message'];
+        $options = $thisMessage['options'];
+        $multiple = $thisMessage['multiple'];
+
+        // デバッグ環境では、セッションに格納した情報を表示させる。
+        // if (env('APP_ENV') === 'local') {
+        //     var_dump($request->session()->get(self::SESSION_KEY_ANSWERS));
+        // }
+
+        if(!$multiple){
+            return view('singleanswer', compact('message', 'options', 'multiple', 'currentMessage'));
+        }else{
+            $goto = $thisMessage['goto'];
+            return view('multipleanswer', compact('message', 'options', 'currentMessage', 'goto'));
+        }
+    }
+
+    // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここ付け足したとこ（あー）
+    // フォーム表示のメソッドを追加
+    public function form()
+    {
+        $message = "入力フォームにメッセージを表示します";
+        $options = [
+            ['display' => 'オプション1', 'goto' => '/next1'],
+            ['display' => 'オプション2', 'goto' => '/next2'],
+        ];
+        $multiple = false;
+
+        return view('form', compact('message', 'options', 'multiple'));
+    }
+
+    public function multiple(Request $request)
+    {
+        $selectedOptions = $request->input('options', []);
+
+        // 選択されたオプションを処理するロジックをここに追加
+        // 例えば、ログを表示したり、データベースに保存したりする
+
+        return view('result', compact('selectedOptions'));
+    }
+    // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここまで
+
+        /**
      * おすすめ商品の表示
      *
      * @param Request $request リクエスト
@@ -451,55 +517,6 @@ class ChatController extends Controller
 
         return view('osusume', compact('products', 'message'));
     }
-
-
-    // Routeに以下の指定をしておくと、
-    // Route::get('/chat/{message}', [ChatController::class, 'chat']);
-    //
-    // localhost/chat/ask-purpose   => $message 'ask-purpose'
-    // localhost/chat/best-one-lead => $message 'best-one-lead'
-    // 様になって、このメソッドが呼び出される。
-    public function chat(Request $request, string $message)
-    {
-        $thisMessage = self::$messages[$message];
-        $currentMessage = $message;
-        $message = $thisMessage['message'];
-        $options = $thisMessage['options'];
-        $multiple = $thisMessage['multiple'];
-
-        // デバッグ環境では、セッションに格納した情報を表示させる。
-        // if (env('APP_ENV') === 'local') {
-        //     var_dump($request->session()->get(self::SESSION_KEY_ANSWERS));
-        // }
-
-        return view('singleanswer', compact('message', 'options', 'multiple', 'currentMessage'));
-    }
-
-    // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここ付け足したとこ（あー）
-    // フォーム表示のメソッドを追加
-    public function form()
-    {
-        $message = "入力フォームにメッセージを表示します";
-        $options = [
-            ['display' => 'オプション1', 'goto' => '/next1'],
-            ['display' => 'オプション2', 'goto' => '/next2'],
-        ];
-        $multiple = false;
-
-        return view('form', compact('message', 'options', 'multiple'));
-    }
-
-    public function multiple(Request $request)
-    {
-        $selectedOptions = $request->input('options', []);
-
-        // 選択されたオプションを処理するロジックをここに追加
-        // 例えば、ログを表示したり、データベースに保存したりする
-
-        return view('result', compact('selectedOptions'));
-    }
-    // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーここまで
-
 
     public function passer(Request $request)
     {

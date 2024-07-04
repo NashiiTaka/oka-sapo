@@ -28,7 +28,7 @@
   <div class="p-2">
     @if (isset($product) && $product->buy_url)
       <p class="font-bold">{{ $product->product_name }}</p>
-      <x-a-button href="{{ $product->buy_url }}" display="購入" target="_blank" />
+      <x-a-button href="{{ $product->buy_url }}" display="購入" />
     @else
       <x-a-button href="/osusume/" display="商品を検索" id="btn-seach" />
     @endif

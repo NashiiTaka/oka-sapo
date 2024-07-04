@@ -1,4 +1,4 @@
-<x-layouts.public title="シングルアンサー | コスメ★ピシャット">
+<x-layouts.public title="コスメ★ピシャット">
 
   <div class="flex justify-center items-center mt-8">
     {{-- 女性のイラスト --}}
@@ -8,8 +8,8 @@
   <h1 class="text-lg mt-4 mb-8 mx-4" id="animated-message"></h1>
   
   @foreach ($options as $o)
-    <a href="{{ $o['goto'] . "?message={$currentMessage}&answer=" . urlencode($o['display']) }}"
-      class="cursor-pointer w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-pink-50 text-gray-800 shadow-sm hover:bg-pink-100 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:hover:text-neutral-300 ">
+    <a href="{{ $o['goto'] . "?message={$currentMessage}&answer=" . urlencode($o['display']) }}" data-message="{{ $currentMessage }}" data-answer="{{ $o['display'] }}"
+      class="answers cursor-pointer w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-pink-50 text-gray-800 shadow-sm hover:bg-pink-100 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:hover:text-neutral-300 ">
       {{ $o['display'] }}
     </a>
   @endforeach
@@ -29,6 +29,15 @@
       }
       
       typeWriter();
+
+      document.querySelectorAll('.answers').forEach((el) => {
+        el.addEventListener('click', (event) => {
+          const message = event.target.dataset.message;
+          const answer = event.target.dataset.answer;
+          localStorage.setItem(message, answer);
+        });
+      });
+        
     });
   </script>
 </x-layouts.public>
