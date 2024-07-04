@@ -1,9 +1,12 @@
 <x-layouts.public title="おすすめ商品♪ | コスメ★ピシャット">
-  <script src="/js/favorites.js"></script>
+  <script src="/js/local-storage.js"></script>
   <h1 class="text-lg mt-4 mx-4" id="animated-message"></h1>
   <div class="container mx-auto pt-3 pb-5">
     <div class="overflow-x-auto">
       <div class="flex space-x-4 px-3">
+        @if (!isset($products) || empty($products) || count($products) === 0)
+          <p>商品が見つかりませんでした。</p>
+        @endif
         @foreach ($products as $product)
           <div class="min-w-[270px] bg-white p-4 border rounded-xl shadow flex flex-col items-center gap-y-2">
             <div class="h-12 flex items-center">
@@ -32,7 +35,7 @@
                 <x-a-button href="{{ $product->buy_url }}" display="購入" target="_blank" px="6" py="2" />
               @endif
               @if($product->product_id)
-                <x-a-button href="/face-detection/{{ $product->product_id }}" display="試着" target="_blank" px="6" py="2" />
+                <x-a-button href="/face-detection/{{ $product->product_id }}" display="試着" px="6" py="2" />
               @endif
               <img class="h-7 w-7 favorites" src="/img/favorite-off.png"
                 data-product-id="{{ $product->product_id }}" />
