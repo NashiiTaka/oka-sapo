@@ -115,9 +115,9 @@
   }
   
   async function main() {
+    createColorPalette();
     await loadModels();
     await setupCamera();
-    createColorPalette();
     onPlay();
   }
   

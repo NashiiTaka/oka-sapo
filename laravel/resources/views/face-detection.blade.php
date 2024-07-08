@@ -20,11 +20,11 @@
       border: 2px solid blue;
     }
   </style>
-  <div class="relative">
+  <div class="relative flex justify-center">
     <video id="video" class="w-full max-h-72 absolute" autoplay muted playsinline></video>
     <canvas id="overlay" class="w-full max-h-72 absolute"></canvas>
   </div>
-  <div class="color-palette" id="colorPalette"></div>
+  <div class="color-palette" id="colorPalette" style="visibility: hidden"></div>
   <div class="p-2">
     @if (isset($product) && $product->buy_url)
       <p class="font-bold">{{ $product->product_name }}</p>
@@ -39,15 +39,17 @@
     window.addEventListener('load', () => {
       const video = document.getElementById('video');
       video.addEventListener('loadedmetadata', () => {
-        console.log('Metadata loaded');
-        const elem1 = document.getElementById('video');
-        // const elem2 = document.getElementById('overlay');
-
-        const elem1Height = elem1.offsetHeight;
-        // elem2.style.height = `${elem1Height}px`;
-
         const colors = document.getElementById('colorPalette');
-        colors.style.marginTop = `${elem1Height + 10}px`;
+        colors.style.marginTop = `${video.offsetHeight + 10}px`;
+
+        const overlay = document.getElementById('overlay');
+
+        overlay.width = video.videoWidth;
+        overlay.height = video.videoHeight;
+        overlay.style.height = `${video.offsetHeight}px`;
+        overlay.style.width = `${video.offsetWidth}px`;
+
+        colors.style.visibility = 'visible';
       });
 
       document.getElementById('btn-seach').addEventListener('click', (event) => {
