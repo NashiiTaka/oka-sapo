@@ -35,12 +35,24 @@
   
   async function setupCamera() {
     const video = document.getElementById('video');
-    const stream = await navigator.mediaDevices.getUserMedia({ video: {} });
-    video.srcObject = stream;
+    const cameraSetting = {
+      audio: false,
+      video: {
+        facingMode: "user",
+      }
+    }
     return new Promise((resolve) => {
-      video.onloadedmetadata = () => {
-        resolve(video);
-      };
+      navigator.mediaDevices.getUserMedia(cameraSetting)
+        .then((mediaStream) => {
+          video.srcObject = mediaStream;
+          video.onloadedmetadata = () => {
+            resolve(video);
+          };
+        })
+        .catch((err) => {
+          console.log(err.toString());
+          resolve(null);
+        });
     });
   }
   
