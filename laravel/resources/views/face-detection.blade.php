@@ -21,7 +21,7 @@
     }
   </style>
   <div class="relative">
-    <video id="video" class="w-full max-h-72 absolute" autoplay muted></video>
+    <video id="video" class="w-full max-h-72 absolute" autoplay muted playsinline></video>
     <canvas id="overlay" class="w-full max-h-72 absolute"></canvas>
   </div>
   <div class="color-palette" id="colorPalette"></div>
