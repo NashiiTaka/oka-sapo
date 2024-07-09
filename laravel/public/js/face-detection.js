@@ -58,7 +58,8 @@
   
   async function loadModels() {
     await faceapi.nets.tinyFaceDetector.loadFromUri('/js/models');
-    await faceapi.nets.faceLandmark68Net.loadFromUri('/js/models');
+    // await faceapi.nets.faceLandmark68Net.loadFromUri('/js/models');
+    await faceapi.nets.faceLandmark68TinyNet.loadFromUri('/js/models');
   }
   
   async function onPlay() {
@@ -70,7 +71,7 @@
     faceapi.matchDimensions(canvas, displaySize);
   
     async function detect() {
-      const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
+      const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks(true);
       const resizedDetections = faceapi.resizeResults(detections, displaySize);
       
       context.clearRect(0, 0, canvas.width, canvas.height);
