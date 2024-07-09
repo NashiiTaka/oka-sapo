@@ -21,8 +21,8 @@
     }
   </style>
   <div class="relative flex justify-center">
-    <video id="video" class="w-full max-h-72 absolute" autoplay muted playsinline></video>
-    <canvas id="overlay" class="w-full max-h-72 absolute"></canvas>
+    <video id="video" class="absolute max-w-full" autoplay muted playsinline></video>
+    <canvas id="overlay" class="absolute max-w-full"></canvas>
   </div>
   <div class="color-palette" id="colorPalette" style="visibility: hidden"></div>
   <div class="p-2">
